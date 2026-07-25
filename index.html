@@ -614,7 +614,7 @@
   const toggle = document.getElementById('themeToggle');
   const root = document.documentElement;
   const stored = localStorage.getItem('qelvix-theme');
-  if (stored) root.setAttribute('data-theme', stored);
+  root.setAttribute('data-theme', stored === 'dark' ? 'dark' : 'light');
   toggle.addEventListener('click', () => {
     const current = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', current);
