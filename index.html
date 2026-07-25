@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qelvix ERP — One Platform for Running Your Business</title>
+<meta name="description" content="Qelvix is a modular ERP covering job cards, workshop management, invoicing, inventory, payroll, HR, and accounting — built for service and multi-business operations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <div class="brand">
+      <span class="brand-mark"></span>
+      Qelvix
+    </div>
+    <nav class="nav-links">
+      <a href="#modules">Modules</a>
+      <a href="#platform">Platform</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌓</button>
+      <button class="btn btn-primary js-open-demo" type="button">Request a demo</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Multi-business ERP</span>
+        <h1>Run every part of your<br>business on one platform</h1>
+        <p class="sub">Qelvix is a modular ERP that covers service operations, customer &amp; vehicle tracking,
+          invoicing, inventory, payroll, HR, and accounting — configurable for any business type,
+          built to scale from one location to many.</p>
+        <div class="hero-actions hero-actions-left">
+          <button class="btn btn-primary js-open-demo" type="button">Request a demo</button>
+          <a class="btn btn-ghost" href="#modules">Explore features</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="mockup">
+          <div class="mockup-bar">
+            <span class="mockup-dot" style="background:var(--series-8)"></span>
+            <span class="mockup-dot" style="background:var(--series-4)"></span>
+            <span class="mockup-dot" style="background:var(--good)"></span>
+            <span class="mockup-url" id="mockupUrl">app.qelvix.com/dashboard</span>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-sidebar">
+              <button class="mockup-nav-item active" data-view="dashboard" title="Dashboard"><span class="material-symbols-outlined">grid_view</span></button>
+              <button class="mockup-nav-item" data-view="jobcards" title="Job Cards"><span class="material-symbols-outlined">assignment</span></button>
+              <button class="mockup-nav-item" data-view="worksheet" title="Job Card Worksheet"><span class="material-symbols-outlined">construction</span></button>
+              <button class="mockup-nav-item" data-view="customers" title="Customers"><span class="material-symbols-outlined">people_alt</span></button>
+              <button class="mockup-nav-item" data-view="employees" title="Employees"><span class="material-symbols-outlined">group</span></button>
+              <button class="mockup-nav-item" data-view="attendance" title="Attendance"><span class="material-symbols-outlined">fact_check</span></button>
+              <button class="mockup-nav-item" data-view="invoices" title="Invoices"><span class="material-symbols-outlined">receipt_long</span></button>
+            </div>
+            <div class="mockup-main">
+
+              <div class="mockup-panel active" data-panel="dashboard">
+                <div class="mockup-kpis mockup-kpis-5">
+                  <div class="mockup-kpi"><div class="mockup-kpi-value">18</div><div class="mockup-kpi-label">Pending</div></div>
+                  <div class="mockup-kpi"><div class="mockup-kpi-value">7</div><div class="mockup-kpi-label">In Progress</div></div>
+                  <div class="mockup-kpi"><div class="mockup-kpi-value">12</div><div class="mockup-kpi-label">Ready</div></div>
+                  <div class="mockup-kpi"><div class="mockup-kpi-value">3</div><div class="mockup-kpi-label">Delivery</div></div>
+                  <div class="mockup-kpi mockup-kpi-warn"><div class="mockup-kpi-value">2</div><div class="mockup-kpi-label">Overdue</div></div>
+                </div>
+                <div class="mockup-widget-grid">
+                  <div class="mockup-widget">
+                    <h5>Today's Schedule</h5>
+                    <div class="mockup-schedule-row">
+                      <span>JC-1042 · Oil Change</span>
+                      <span class="mockup-schedule-time">09:30 AM</span>
+                    </div>
+                    <div class="mockup-schedule-row">
+                      <span>JC-1044 · Brake Check</span>
+                      <span class="mockup-schedule-time">10:15 AM</span>
+                    </div>
+                    <div class="mockup-schedule-row">
+                      <span>JC-1039 · Full Service</span>
+                      <span class="mockup-schedule-time">08:00 AM</span>
+                    </div>
+                    <div class="mockup-quick-actions">
+                      <span class="mockup-quick-action"><span class="material-symbols-outlined">add</span>New Job Card</span>
+                      <span class="mockup-quick-action"><span class="material-symbols-outlined">person_add</span>New Customer</span>
+                    </div>
+                  </div>
+                  <div class="mockup-widget">
+                    <h5>Workshop Capacity</h5>
+                    <div class="mockup-progress">
+                      <div class="mockup-progress-label"><span>Bay 1</span><span>90%</span></div>
+                      <div class="mockup-progress-track"><div class="mockup-progress-fill" style="width:90%"></div></div>
+                    </div>
+                    <div class="mockup-progress">
+                      <div class="mockup-progress-label"><span>Bay 2</span><span>60%</span></div>
+                      <div class="mockup-progress-track"><div class="mockup-progress-fill" style="width:60%"></div></div>
+                    </div>
+                    <h5 class="mockup-widget-h5-mt">Workforce Status</h5>
+                    <div class="mockup-dot-stats">
+                      <div class="mockup-dot-stat-row"><span class="mockup-dot" style="background:var(--good)"></span>Active <strong>38</strong></div>
+                      <div class="mockup-dot-stat-row"><span class="mockup-dot" style="background:var(--series-4)"></span>Late <strong>2</strong></div>
+                      <div class="mockup-dot-stat-row"><span class="mockup-dot" style="background:var(--series-8)"></span>Absent <strong>1</strong></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mockup-panel" data-panel="jobcards">
+                <div class="mockup-kpis mockup-kpis-5">
+                  <div class="mockup-kpi"><div class="mockup-kpi-value">5</div><div class="mockup-kpi-label">New Today</div></div>
+                  <div class="mockup-kpi"><div class="mockup-kpi-value">9</div><div class="mockup-kpi-label">In Progress</div></div>
+                  <div class="mockup-kpi"><div class="mockup-kpi-value">14</div><div class="mockup-kpi-label">Completed</div></div>
+                  <div class="mockup-kpi"><div class="mockup-kpi-value">4</div><div class="mockup-kpi-label">Pending Delivery</div></div>
+                  <div class="mockup-kpi mockup-kpi-warn"><div class="mockup-kpi-value">2</div><div class="mockup-kpi-label">Overdue</div></div>
+                </div>
+                <div class="mockup-table">
+                  <div class="mockup-row mockup-row-head">
+                    <span>Job Card</span><span>Vehicle</span><span>Advisor</span><span>Status</span>
+                  </div>
+                  <div class="mockup-row">
+                    <span>JC-1042</span><span>KA-05 MJ 2231</span><span>R. Kumar</span>
+                    <span class="badge badge-progress">Work in Progress</span>
+                  </div>
+                  <div class="mockup-row">
+                    <span>JC-1041</span><span>KA-01 AB 9087</span><span>S. Rao</span>
+                    <span class="badge badge-qc">Floor Review</span>
+                  </div>
+                  <div class="mockup-row">
+                    <span>JC-1039</span><span>KA-03 XY 4410</span><span>A. Sharma</span>
+                    <span class="badge badge-done">Ready to Deliver</span>
+                  </div>
+                  <div class="mockup-row">
+                    <span>JC-1038</span><span>KA-05 QW 7712</span><span>Unassigned</span>
+                    <span class="badge badge-open">Open</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mockup-panel" data-panel="worksheet">
+                <div class="mockup-worksheet-head">
+                  <div>
+                    <div class="mockup-worksheet-title">JC-1042 &nbsp;·&nbsp; KA-05 MJ 2231</div>
+                    <div class="mockup-worksheet-sub">Anil Kumar &nbsp;•&nbsp; Maruti Swift VDi &nbsp;•&nbsp; Bay 2</div>
+                  </div>
+                  <span class="badge badge-progress">Work in Progress</span>
+                </div>
+                <div class="mockup-stepper">
+                  <div class="mockup-step done"><span class="mockup-step-dot"></span>Open</div>
+                  <div class="mockup-step done"><span class="mockup-step-dot"></span>Assigned</div>
+                  <div class="mockup-step active"><span class="mockup-step-dot"></span>In Progress</div>
+                  <div class="mockup-step"><span class="mockup-step-dot"></span>Floor Review</div>
+                  <div class="mockup-step"><span class="mockup-step-dot"></span>Delivered</div>
+                </div>
+                <div class="mockup-widget-grid">
+                  <div class="mockup-widget">
+                    <h5>Complaint &amp; Inspection</h5>
+                    <div class="mockup-schedule-row"><span>Engine noise on cold start</span></div>
+                    <div class="mockup-schedule-row"><span>Front-left brake pad worn</span></div>
+                    <h5 class="mockup-widget-h5-mt">Labour</h5>
+                    <div class="mockup-schedule-row">
+                      <span>General service</span><span class="mockup-schedule-time">1.5 hrs</span>
+                    </div>
+                    <div class="mockup-schedule-row">
+                      <span>Brake pad replacement</span><span class="mockup-schedule-time">0.8 hrs</span>
+                    </div>
+                  </div>
+                  <div class="mockup-widget">
+                    <h5>Parts Used</h5>
+                    <div class="mockup-schedule-row">
+                      <span>Brake pad set (front)</span><span class="mockup-schedule-time">₹1,450</span>
+                    </div>
+                    <div class="mockup-schedule-row">
+                      <span>Engine oil 5W-30 (4L)</span><span class="mockup-schedule-time">₹2,100</span>
+                    </div>
+                    <h5 class="mockup-widget-h5-mt">Assigned To</h5>
+                    <div class="mockup-dot-stats">
+                      <div class="mockup-dot-stat-row"><span class="mockup-dot" style="background:var(--series-1)"></span>R. Kumar — Technician</div>
+                      <div class="mockup-dot-stat-row"><span class="mockup-dot" style="background:var(--series-3)"></span>Bay 2</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mockup-panel" data-panel="customers">
+                <div class="mockup-toolbar">
+                  <span class="mockup-toolbar-title">Customers</span>
+                  <span class="mockup-toolbar-btn"><span class="material-symbols-outlined">add</span>Add Customer</span>
+                </div>
+                <div class="mockup-table">
+                  <div class="mockup-row mockup-row-head mockup-row-5">
+                    <span>Name</span><span>Phone</span><span>Email</span><span>City</span><span>Actions</span>
+                  </div>
+                  <div class="mockup-row mockup-row-5">
+                    <span>Anil Kumar</span><span>98470 xxxxx</span><span>anil@mail.com</span><span>Kochi</span>
+                    <span class="mockup-row-actions"><span class="material-symbols-outlined">edit</span></span>
+                  </div>
+                  <div class="mockup-row mockup-row-5">
+                    <span>Fathima N.</span><span>90480 xxxxx</span><span>fathima@mail.com</span><span>Kozhikode</span>
+                    <span class="mockup-row-actions"><span class="material-symbols-outlined">edit</span></span>
+                  </div>
+                  <div class="mockup-row mockup-row-5">
+                    <span>George T.</span><span>94470 xxxxx</span><span>george@mail.com</span><span>Thrissur</span>
+                    <span class="mockup-row-actions"><span class="material-symbols-outlined">edit</span></span>
+                  </div>
+                  <div class="mockup-row mockup-row-5">
+                    <span>Priya S.</span><span>96330 xxxxx</span><span>priya@mail.com</span><span>Kochi</span>
+                    <span class="mockup-row-actions"><span class="material-symbols-outlined">edit</span></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mockup-panel" data-panel="employees">
+                <div class="mockup-kpis mockup-kpis-bar">
+                  <div class="mockup-kpi mockup-kpi-bar" style="--bar-color:var(--series-1)">
+                    <div class="mockup-kpi-value">54</div>
+                    <div class="mockup-kpi-label">Total Employees</div>
+                  </div>
+                  <div class="mockup-kpi mockup-kpi-bar" style="--bar-color:var(--good)">
+                    <div class="mockup-kpi-value">48</div>
+                    <div class="mockup-kpi-label">Active Employees</div>
+                  </div>
+                  <div class="mockup-kpi mockup-kpi-bar" style="--bar-color:var(--series-2)">
+                    <div class="mockup-kpi-value">6</div>
+                    <div class="mockup-kpi-label">Departments</div>
+                  </div>
+                  <div class="mockup-kpi mockup-kpi-bar" style="--bar-color:var(--series-7)">
+                    <div class="mockup-kpi-value">4</div>
+                    <div class="mockup-kpi-label">New This Month</div>
+                  </div>
+                </div>
+                <div class="mockup-table">
+                  <div class="mockup-row mockup-row-head">
+                    <span>Name</span><span>Job Title</span><span>Department</span><span>Status</span>
+                  </div>
+                  <div class="mockup-row">
+                    <span>R. Kumar</span><span>Technician</span><span>Workshop</span>
+                    <span class="badge badge-done">Active</span>
+                  </div>
+                  <div class="mockup-row">
+                    <span>S. Rao</span><span>Sr. Technician</span><span>Workshop</span>
+                    <span class="badge badge-done">Active</span>
+                  </div>
+                  <div class="mockup-row">
+                    <span>A. Sharma</span><span>Service Advisor</span><span>Front Office</span>
+                    <span class="badge badge-done">Active</span>
+                  </div>
+                  <div class="mockup-row">
+                    <span>M. Nair</span><span>Technician</span><span>Workshop</span>
+                    <span class="badge badge-open">On Leave</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mockup-panel" data-panel="attendance">
+                <div class="mockup-kpis">
+                  <div class="mockup-kpi">
+                    <div class="mockup-kpi-value">42</div>
+                    <div class="mockup-kpi-label">Present today</div>
+                  </div>
+                  <div class="mockup-kpi">
+                    <div class="mockup-kpi-value">3</div>
+                    <div class="mockup-kpi-label">On leave</div>
+                  </div>
+                  <div class="mockup-kpi">
+                    <div class="mockup-kpi-value">2</div>
+                    <div class="mockup-kpi-label">Late arrivals</div>
+                  </div>
+                </div>
+                <div class="mockup-table">
+                  <div class="mockup-row mockup-row-head">
+                    <span>Employee</span><span>Role</span><span>Clock In</span><span>Status</span>
+                  </div>
+                  <div class="mockup-row">
+                    <span>R. Kumar</span><span>Technician</span><span>09:02 AM</span>
+                    <span class="badge badge-done">Present</span>
+                  </div>
+                  <div class="mockup-row">
+                    <span>S. Rao</span><span>Technician</span><span>09:41 AM</span>
+                    <span class="badge badge-qc">Late</span>
+                  </div>
+                  <div class="mockup-row">
+                    <span>A. Sharma</span><span>Advisor</span><span>08:55 AM</span>
+                    <span class="badge badge-done">Present</span>
+                  </div>
+                  <div class="mockup-row">
+                    <span>M. Nair</span><span>Technician</span><span>—</span>
+                    <span class="badge badge-open">On Leave</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mockup-panel" data-panel="invoices">
+                <div class="mockup-toolbar">
+                  <span class="mockup-toolbar-title">Invoices</span>
+                  <span class="mockup-toolbar-btn"><span class="material-symbols-outlined">add</span>New Invoice</span>
+                </div>
+                <div class="mockup-table">
+                  <div class="mockup-row mockup-row-head mockup-row-5">
+                    <span>Invoice #</span><span>Customer</span><span>Job Card</span><span>Amount</span><span>Status</span>
+                  </div>
+                  <div class="mockup-row mockup-row-5">
+                    <span>INV-2231</span><span>Anil Kumar</span><span>JC-1039</span><span>₹4,850</span>
+                    <span class="badge badge-done">Paid</span>
+                  </div>
+                  <div class="mockup-row mockup-row-5">
+                    <span>INV-2230</span><span>Fathima N.</span><span>JC-1035</span><span>₹2,100</span>
+                    <span class="badge badge-qc">Partial</span>
+                  </div>
+                  <div class="mockup-row mockup-row-5">
+                    <span>INV-2229</span><span>George T.</span><span>JC-1031</span><span>₹6,400</span>
+                    <span class="badge badge-open">Unpaid</span>
+                  </div>
+                  <div class="mockup-row mockup-row-5">
+                    <span>INV-2228</span><span>Priya S.</span><span>JC-1028</span><span>₹1,750</span>
+                    <span class="badge badge-done">Paid</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-tile">
+        <div class="stat-value">10+</div>
+        <div class="stat-label">Core modules</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-value">100%</div>
+        <div class="stat-label">Role-based access control</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-value">Multi</div>
+        <div class="stat-label">Tenant &amp; company aware</div>
+      </div>
+      <div class="stat-tile">
+        <div class="stat-value">Live</div>
+        <div class="stat-label">No-login customer tracking</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="modules">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">What's inside</span>
+      <h2>Every module your operation needs</h2>
+      <p>Each module works standalone or together — turn on what your business needs today,
+        add more as you grow.</p>
+    </div>
+    <div class="feature-grid">
+
+      <a class="feature-card" href="module.html?id=jobcards">
+        <div class="feature-icon" style="background:var(--series-1)">🛠️</div>
+        <h3>Job Card &amp; Workshop Management</h3>
+        <p>Manage service jobs from intake to delivery with a full status workflow and audit trail.</p>
+        <ul>
+          <li>Job card creation, search, filter &amp; print</li>
+          <li>Complaint registration &amp; prioritisation</li>
+          <li>Technician &amp; bay assignment with availability</li>
+          <li>Labour tracking — estimated vs. actual hours</li>
+          <li>QC approval and customer sign-off on closure</li>
+        </ul>
+        <span class="feature-card-cta">See it in action <span class="material-symbols-outlined">arrow_forward</span></span>
+      </a>
+
+      <a class="feature-card" href="module.html?id=customers">
+        <div class="feature-icon" style="background:var(--series-2)">🚗</div>
+        <h3>Customer &amp; Vehicle Tracking</h3>
+        <p>Give customers visibility without giving them a login.</p>
+        <ul>
+          <li>Customer &amp; vehicle master records</li>
+          <li>Ownership validation &amp; service history</li>
+          <li>Public no-login QR tracking portal</li>
+          <li>Real-time job status for customers</li>
+        </ul>
+        <span class="feature-card-cta">See it in action <span class="material-symbols-outlined">arrow_forward</span></span>
+      </a>
+
+      <a class="feature-card" href="module.html?id=invoices">
+        <div class="feature-icon" style="background:var(--series-3)">🧾</div>
+        <h3>Invoicing &amp; Billing</h3>
+        <p>Turn closed jobs into invoices without re-entering a single line item.</p>
+        <ul>
+          <li>Auto-generate invoices from closed job cards</li>
+          <li>Labour, parts &amp; tax line items</li>
+          <li>PDF generation &amp; print</li>
+          <li>Invoice tracking &amp; payment status</li>
+        </ul>
+        <span class="feature-card-cta">See it in action <span class="material-symbols-outlined">arrow_forward</span></span>
+      </a>
+
+      <a class="feature-card" href="module.html?id=inventory">
+        <div class="feature-icon" style="background:var(--series-4)">📦</div>
+        <h3>Inventory &amp; Stock</h3>
+        <p>Know what's on the shelf before you promise it to a customer.</p>
+        <ul>
+          <li>Parts catalog &amp; stock levels</li>
+          <li>Reserve, consume &amp; return tracking</li>
+          <li>Stock adjustments with audit history</li>
+          <li>Low-stock and availability checks</li>
+        </ul>
+        <span class="feature-card-cta">See it in action <span class="material-symbols-outlined">arrow_forward</span></span>
+      </a>
+
+      <a class="feature-card" href="module.html?id=payroll">
+        <div class="feature-icon" style="background:var(--series-7)">👥</div>
+        <h3>Payroll &amp; HR</h3>
+        <p>From hire to payslip, in one system.</p>
+        <ul>
+          <li>Salary structures &amp; statutory deductions</li>
+          <li>Payroll runs &amp; payslip generation</li>
+          <li>Recruitment/ATS with interview scheduling</li>
+          <li>Onboarding checklists &amp; performance reviews</li>
+          <li>Overtime requests &amp; compensatory leave</li>
+        </ul>
+        <span class="feature-card-cta">See it in action <span class="material-symbols-outlined">arrow_forward</span></span>
+      </a>
+
+      <a class="feature-card" href="module.html?id=employeeportal">
+        <div class="feature-icon" style="background:var(--series-3)">📱</div>
+        <h3>Employee Self-Service Portal</h3>
+        <p>Give every employee a mobile-friendly home for their own HR needs.</p>
+        <ul>
+          <li>Payslips, leave requests &amp; balances</li>
+          <li>Onboarding checklists for new hires</li>
+          <li>Performance review tracking</li>
+          <li>Installable as a PWA on any phone</li>
+        </ul>
+        <span class="feature-card-cta">See it in action <span class="material-symbols-outlined">arrow_forward</span></span>
+      </a>
+
+      <a class="feature-card" href="module.html?id=accounting">
+        <div class="feature-icon" style="background:var(--series-6)">📊</div>
+        <h3>Accounting &amp; Reporting</h3>
+        <p>Close the loop from operations to the general ledger.</p>
+        <ul>
+          <li>Chart of accounts &amp; journal entry engine</li>
+          <li>Auto-posting from invoices</li>
+          <li>Ledger &amp; trial balance</li>
+          <li>Revenue, technician &amp; utilisation KPIs</li>
+          <li>Fixed asset register with depreciation</li>
+        </ul>
+        <span class="feature-card-cta">See it in action <span class="material-symbols-outlined">arrow_forward</span></span>
+      </a>
+
+      <a class="feature-card" href="module.html?id=delivery">
+        <div class="feature-icon" style="background:var(--series-5)">🚚</div>
+        <h3>Delivery &amp; Scheduling</h3>
+        <p>Coordinate the last mile alongside the shop floor.</p>
+        <ul>
+          <li>Delivery scheduling &amp; dispatch log</li>
+          <li>Workshop capacity &amp; scheduling dashboard</li>
+          <li>Real-time work allocation across bays</li>
+        </ul>
+        <span class="feature-card-cta">See it in action <span class="material-symbols-outlined">arrow_forward</span></span>
+      </a>
+
+      <a class="feature-card" href="module.html?id=security">
+        <div class="feature-icon" style="background:var(--series-8)">🔒</div>
+        <h3>Security &amp; Multi-Tenancy</h3>
+        <p>Enterprise-grade controls from day one.</p>
+        <ul>
+          <li>Role-based access on every endpoint</li>
+          <li>Company-scoped data isolation (Hibernate filters)</li>
+          <li>Secure token handling &amp; brute-force protection</li>
+          <li>Full audit trail on every state change</li>
+        </ul>
+        <span class="feature-card-cta">See it in action <span class="material-symbols-outlined">arrow_forward</span></span>
+      </a>
+
+      <a class="feature-card" href="module.html?id=platform">
+        <div class="feature-icon" style="background:#5a5a58">⚙️</div>
+        <h3>Platform &amp; Operations</h3>
+        <p>Built to run reliably, not just to demo well.</p>
+        <ul>
+          <li>Containerized backend &amp; frontend</li>
+          <li>Redis-backed caching &amp; rate limiting</li>
+          <li>CI/CD pipelines with coverage gates</li>
+          <li>Prometheus metrics &amp; structured logging</li>
+        </ul>
+        <span class="feature-card-cta">See it in action <span class="material-symbols-outlined">arrow_forward</span></span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="platform">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Why Qelvix</span>
+      <h2>Built as a platform, not a point solution</h2>
+      <p>Qelvix is a generic multi-business ERP — every module is configurable to your
+        business type rather than hardcoded to one industry.</p>
+    </div>
+    <div class="pillar-grid">
+      <div class="pillar">
+        <div class="pillar-icon">🧩</div>
+        <h4>Configurable by design</h4>
+        <p>Terminology and workflows adapt per business — job card, technician, and bay
+          are generic patterns, not fixed labels.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🏢</div>
+        <h4>Multi-tenant ready</h4>
+        <p>Data is scoped per company at the database layer, so one deployment can safely
+          serve many businesses.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🔐</div>
+        <h4>Secure by default</h4>
+        <p>Role-based permissions, audit trails, and hardened auth are built into the
+          platform, not bolted on later.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">📈</div>
+        <h4>Grows with you</h4>
+        <p>Start with one module — job cards, or payroll — and turn on more as your
+          operation expands.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="cta-band">
+      <h2>See Qelvix running your workflow</h2>
+      <p>Tell us about your business and we'll walk you through the modules that fit.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" id="openDemoForm" type="button">Request a demo</button>
+        <a class="btn btn-ghost" id="talkToUsLink" href="https://wa.me/919947919201" target="_blank" rel="noopener">Talk to us on WhatsApp</a>
+      </div>
+      <div class="contact-details">
+        <a href="tel:+919947919201">+91 99479 19201</a>
+        <span class="contact-sep">•</span>
+        <a href="tel:+919744735749">+91 97447 35749</a>
+        <span class="contact-sep">•</span>
+        <a href="mailto:shibilvellarampara@gmail.com">shibilvellarampara@gmail.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="modal-overlay" id="demoModalOverlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="demoModalTitle">
+    <button class="modal-close" id="demoModalClose" type="button" aria-label="Close">✕</button>
+    <h3 id="demoModalTitle">Tell us about your business</h3>
+    <p class="modal-sub">We'll get back to you on WhatsApp or email — whichever you prefer.</p>
+    <form id="demoForm">
+      <div class="form-row">
+        <label for="fName">Your name</label>
+        <input type="text" id="fName" name="name" required>
+      </div>
+      <div class="form-row">
+        <label for="fBusiness">Business name</label>
+        <input type="text" id="fBusiness" name="business" required>
+      </div>
+      <div class="form-row">
+        <label for="fType">Business type</label>
+        <select id="fType" name="type">
+          <option value="" disabled selected>Select your business type</option>
+          <option value="Auto service garage / workshop">Auto service garage / workshop</option>
+          <option value="Retail / showroom">Retail / showroom</option>
+          <option value="Distribution / wholesale">Distribution / wholesale</option>
+          <option value="Manufacturing">Manufacturing</option>
+          <option value="Logistics / delivery">Logistics / delivery</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="form-row" id="fTypeOtherRow" hidden>
+        <label for="fTypeOther">Please specify your business type</label>
+        <input type="text" id="fTypeOther" name="typeOther" placeholder="Tell us what your business does">
+      </div>
+      <div class="form-row">
+        <label for="fPhone">Phone / WhatsApp number</label>
+        <input type="tel" id="fPhone" name="phone" required>
+      </div>
+      <div class="form-row">
+        <label for="fMessage">What are you looking to solve?</label>
+        <textarea id="fMessage" name="message" rows="3" placeholder="Optional — e.g. job card tracking, payroll, inventory"></textarea>
+      </div>
+      <div class="modal-actions">
+        <button type="submit" class="btn btn-primary" id="sendWhatsapp">Send via WhatsApp</button>
+        <button type="submit" class="btn btn-ghost" id="sendEmail">Send via Email</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="container footer-inner">
+    <div class="brand">
+      <span class="brand-mark"></span>
+      Qelvix
+    </div>
+    <div class="footer-note">© 2026 Qelvix ERP. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  const stored = localStorage.getItem('qelvix-theme');
+  if (stored) root.setAttribute('data-theme', stored);
+  toggle.addEventListener('click', () => {
+    const current = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', current);
+    localStorage.setItem('qelvix-theme', current);
+  });
+
+  const mockupUrls = {
+    dashboard: 'app.qelvix.com/dashboard',
+    jobcards: 'app.qelvix.com/job-cards',
+    worksheet: 'app.qelvix.com/job-cards/JC-1042',
+    customers: 'app.qelvix.com/customers',
+    employees: 'app.qelvix.com/employees',
+    attendance: 'app.qelvix.com/attendance',
+    invoices: 'app.qelvix.com/invoices'
+  };
+  const navButtons = document.querySelectorAll('.mockup-nav-item[data-view]');
+  const panels = document.querySelectorAll('.mockup-panel');
+  const mockupUrl = document.getElementById('mockupUrl');
+  navButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const view = btn.dataset.view;
+      navButtons.forEach(b => b.classList.toggle('active', b === btn));
+      panels.forEach(p => p.classList.toggle('active', p.dataset.panel === view));
+      mockupUrl.textContent = mockupUrls[view];
+    });
+  });
+
+  const DEMO_PHONE = '919947919201';
+  const DEMO_EMAIL = 'shibilvellarampara@gmail.com';
+  const overlay = document.getElementById('demoModalOverlay');
+  const form = document.getElementById('demoForm');
+
+  function openDemoModal() {
+    overlay.classList.add('open');
+    document.getElementById('fName').focus();
+  }
+  function closeDemoModal() {
+    overlay.classList.remove('open');
+  }
+  document.querySelectorAll('.js-open-demo, #openDemoForm').forEach(btn => {
+    btn.addEventListener('click', openDemoModal);
+  });
+  document.getElementById('demoModalClose').addEventListener('click', closeDemoModal);
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeDemoModal();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) closeDemoModal();
+  });
+
+  const fType = document.getElementById('fType');
+  const fTypeOtherRow = document.getElementById('fTypeOtherRow');
+  const fTypeOther = document.getElementById('fTypeOther');
+  fType.addEventListener('change', () => {
+    const isOther = fType.value === 'Other';
+    fTypeOtherRow.hidden = !isOther;
+    fTypeOther.required = isOther;
+    if (isOther) fTypeOther.focus();
+  });
+
+  function getBusinessType() {
+    if (fType.value === 'Other') {
+      const other = fTypeOther.value.trim();
+      return other ? `Other — ${other}` : 'Other';
+    }
+    return fType.value;
+  }
+
+  function buildMessage(forWhatsapp) {
+    const name = document.getElementById('fName').value.trim();
+    const business = document.getElementById('fBusiness').value.trim();
+    const type = getBusinessType();
+    const phone = document.getElementById('fPhone').value.trim();
+    const message = document.getElementById('fMessage').value.trim();
+    const b = (s) => forWhatsapp ? `*${s}*` : s;
+
+    let lines = [
+      b('New Demo Request — Qelvix ERP'),
+      '',
+      `Name: ${name}`,
+      `Business: ${business}`
+    ];
+    if (type) lines.push(`Business type: ${type}`);
+    lines.push(`Phone: ${phone}`);
+    if (message) {
+      lines.push('');
+      lines.push(`Details: ${message}`);
+    }
+    return lines.join('\n');
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+    const submitter = e.submitter;
+    if (submitter && submitter.id === 'sendEmail') {
+      const subject = encodeURIComponent('Demo request — Qelvix ERP');
+      window.location.href = `mailto:${DEMO_EMAIL}?subject=${subject}&body=${encodeURIComponent(buildMessage(false))}`;
+    } else {
+      window.open(`https://wa.me/${DEMO_PHONE}?text=${encodeURIComponent(buildMessage(true))}`, '_blank');
+    }
+    closeDemoModal();
+    form.reset();
+    fTypeOtherRow.hidden = true;
+    fTypeOther.required = false;
+  });
+</script>
+
+</body>
+</html>
