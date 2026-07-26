@@ -17,7 +17,7 @@
       <span class="brand-mark"></span>
       Qelvix
     </div>
-    <nav class="nav-links">
+    <nav class="nav-links" id="navLinks">
       <a href="#modules">Modules</a>
       <a href="#platform">Platform</a>
       <a href="#contact">Contact</a>
@@ -25,6 +25,9 @@
     <div class="nav-cta">
       <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">🌓</button>
       <button class="btn btn-primary js-open-demo" type="button">Request a demo</button>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
     </div>
   </div>
 </header>
@@ -45,6 +48,7 @@
       </div>
 
       <div class="hero-visual">
+        <div class="hero-mockup-frame" id="heroMockupFrame">
         <div class="mockup">
           <div class="mockup-bar">
             <span class="mockup-dot" style="background:var(--series-8)"></span>
@@ -326,6 +330,7 @@
 
             </div>
           </div>
+        </div>
         </div>
       </div>
     </div>
@@ -621,6 +626,35 @@
     localStorage.setItem('qelvix-theme', current);
   });
 
+  const heroMockupFrame = document.getElementById('heroMockupFrame');
+  const heroMockup = heroMockupFrame.querySelector('.mockup');
+  const heroMockupNaturalWidth = 640;
+  function scaleHeroMockup() {
+    if (window.matchMedia('(max-width: 900px)').matches) {
+      const scale = heroMockupFrame.clientWidth / heroMockupNaturalWidth;
+      heroMockup.style.transform = `scale(${scale})`;
+      heroMockupFrame.style.height = `${heroMockup.offsetHeight * scale}px`;
+    } else {
+      heroMockup.style.transform = '';
+      heroMockupFrame.style.height = '';
+    }
+  }
+  scaleHeroMockup();
+  window.addEventListener('resize', scaleHeroMockup);
+
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
   const mockupUrls = {
     dashboard: 'app.qelvix.com/dashboard',
     jobcards: 'app.qelvix.com/job-cards',
@@ -639,6 +673,7 @@
       navButtons.forEach(b => b.classList.toggle('active', b === btn));
       panels.forEach(p => p.classList.toggle('active', p.dataset.panel === view));
       mockupUrl.textContent = mockupUrls[view];
+      scaleHeroMockup();
     });
   });
 

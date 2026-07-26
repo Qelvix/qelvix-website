@@ -127,6 +127,15 @@ header.nav {
   font-size: 13px;
   cursor: pointer;
 }
+.nav-toggle {
+  display: none;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-primary);
+  border-radius: 8px;
+  padding: 6px;
+  cursor: pointer;
+}
 
 .btn {
   display: inline-flex;
@@ -572,16 +581,30 @@ button.mockup-nav-item:hover {
   .hero-grid { grid-template-columns: 1fr; }
   .hero-copy { text-align: center; }
   .hero-actions-left { justify-content: center; }
-  .mockup-row { grid-template-columns: 1fr 1fr; row-gap: 6px; }
-  .mockup-row span:nth-child(3) { display: none; }
-  .mockup-row-5 { grid-template-columns: 1fr 1fr; }
-  .mockup-row-5 span:nth-child(3),
-  .mockup-row-5 span:nth-child(4) { display: none; }
-  .mockup-kpis-5 { grid-template-columns: repeat(3, 1fr); }
-  .mockup-kpis-5 .mockup-kpi:nth-child(4),
-  .mockup-kpis-5 .mockup-kpi:nth-child(5) { display: none; }
-  .mockup-kpis-bar { grid-template-columns: repeat(2, 1fr); }
-  .mockup-widget-grid { grid-template-columns: 1fr; }
+  .module-panel-body .mockup-row { grid-template-columns: 1fr 1fr; row-gap: 6px; }
+  .module-panel-body .mockup-row span:nth-child(3) { display: none; }
+  .module-panel-body .mockup-row-5 { grid-template-columns: 1fr 1fr; }
+  .module-panel-body .mockup-row-5 span:nth-child(3),
+  .module-panel-body .mockup-row-5 span:nth-child(4) { display: none; }
+  .module-panel-body .mockup-kpis-5 { grid-template-columns: repeat(3, 1fr); }
+  .module-panel-body .mockup-kpis-5 .mockup-kpi:nth-child(4),
+  .module-panel-body .mockup-kpis-5 .mockup-kpi:nth-child(5) { display: none; }
+  .module-panel-body .mockup-kpis-bar { grid-template-columns: repeat(2, 1fr); }
+  .module-panel-body .mockup-widget-grid { grid-template-columns: 1fr; }
+
+  /* Hero mockup: scale the whole "screenshot" down as one unit instead of
+     reflowing its internal grid — keeps it a wide rectangle on phones. */
+  .hero-visual {
+    min-width: 0;
+  }
+  .hero-mockup-frame {
+    min-width: 0;
+    overflow: hidden;
+  }
+  .hero-mockup-frame .mockup {
+    width: 640px;
+    transform-origin: top left;
+  }
 }
 
 /* Section shell */
@@ -790,7 +813,29 @@ footer {
   .feature-grid { grid-template-columns: repeat(2, 1fr); }
   .pillar-grid { grid-template-columns: repeat(2, 1fr); }
   .stat-row { grid-template-columns: repeat(2, 1fr); }
-  .nav-links { display: none; }
+  .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: var(--surface-1);
+    border-bottom: 1px solid var(--border);
+    max-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+  }
+  .nav-links.open {
+    max-height: 320px;
+    visibility: visible;
+  }
+  .nav-links a {
+    padding: 14px 24px;
+    border-top: 1px solid var(--border);
+  }
 }
 @media (max-width: 600px) {
   .feature-grid { grid-template-columns: 1fr; }
