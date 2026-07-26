@@ -150,10 +150,10 @@ header.nav {
   cursor: pointer;
 }
 .btn-primary {
-  background: var(--series-1);
-  color: #ffffff;
+  background: color-mix(in srgb, var(--series-1) 14%, transparent);
+  color: var(--series-1);
 }
-.btn-primary:hover { opacity: 0.92; }
+.btn-primary:hover { background: color-mix(in srgb, var(--series-1) 22%, transparent); }
 .btn-ghost {
   border: 1px solid var(--border);
   color: var(--text-primary);
@@ -755,10 +755,11 @@ section.alt {
 /* CTA band */
 .cta-band {
   text-align: center;
-  background: var(--series-1);
+  background: color-mix(in srgb, var(--series-1) 10%, var(--surface-1));
+  border: 1px solid var(--border);
   border-radius: 20px;
   padding: 56px 40px;
-  color: #ffffff;
+  color: var(--text-primary);
 }
 .cta-band h2 {
   font-size: 28px;
@@ -767,29 +768,23 @@ section.alt {
 }
 .cta-band p {
   font-size: 16px;
-  opacity: 0.9;
+  color: var(--text-secondary);
   margin: 0 0 28px;
 }
 .cta-band .btn-primary {
-  background: #ffffff;
-  color: var(--series-1);
+  border-color: color-mix(in srgb, var(--series-1) 30%, transparent);
 }
-.cta-band .btn-ghost {
-  border-color: rgba(255,255,255,0.4);
-  color: #ffffff;
-}
-.cta-band .btn-ghost:hover { background: rgba(255,255,255,0.12); }
 .contact-details {
   margin-top: 28px;
   font-size: 14px;
-  color: rgba(255,255,255,0.85);
+  color: var(--text-secondary);
   display: flex;
   gap: 10px;
   justify-content: center;
   flex-wrap: wrap;
 }
-.contact-details a { text-decoration: underline; text-decoration-color: rgba(255,255,255,0.35); }
-.contact-details a:hover { text-decoration-color: rgba(255,255,255,0.9); }
+.contact-details a { text-decoration: underline; text-decoration-color: var(--border); }
+.contact-details a:hover { text-decoration-color: var(--series-1); }
 .contact-sep { opacity: 0.5; }
 
 /* Footer */
