@@ -102,10 +102,13 @@ header.nav {
 .brand-mark {
   width: 28px;
   height: 28px;
-  border-radius: 7px;
-  background: var(--series-1);
   display: inline-block;
+  object-fit: contain;
+  flex-shrink: 0;
 }
+.brand-mark.brand-mark-dark { display: none; }
+:root[data-theme="dark"] .brand-mark.brand-mark-light { display: none; }
+:root[data-theme="dark"] .brand-mark.brand-mark-dark { display: inline-block; }
 .nav-links {
   display: flex;
   gap: 28px;
