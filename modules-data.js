@@ -87,10 +87,10 @@ const MODULES = {
   },
 
   customers: {
-    name: 'Customer & Vehicle Tracking',
+    name: 'Customers & Vehicles',
     icon: 'people_alt',
     color: 'var(--series-2)',
-    tagline: 'Give customers visibility without giving them a login.',
+    tagline: 'One record per customer and vehicle — ownership, history, and everything since the first visit.',
     features: [
       {
         id: 'customers', label: 'Customers', icon: 'people_alt',
@@ -117,7 +117,16 @@ const MODULES = {
             <div class="mockup-row"><span>KA-01 AB 9087</span><span>Fathima N.</span><span>14 days ago</span><span class="badge badge-qc">Service Due</span></div>
             <div class="mockup-row"><span>KA-05 QW 7712</span><span>Priya S.</span><span>40 days ago</span><span class="badge badge-open">Overdue</span></div>
           </div>`
-      },
+      }
+    ]
+  },
+
+  tracking: {
+    name: 'Live Vehicle Tracking',
+    icon: 'qr_code_2',
+    color: 'var(--good)',
+    tagline: 'Customers check real-time status without a login, a call, or an account.',
+    features: [
       {
         id: 'portal', label: 'Public Tracking Portal', icon: 'qr_code_2',
         html: `
@@ -136,6 +145,70 @@ const MODULES = {
                 <div class="mockup-step"><span class="mockup-step-dot"></span>Ready for pickup</div>
               </div>
             </div>
+          </div>`
+      },
+      {
+        id: 'offers', label: 'Offers on Tracking Page', icon: 'local_offer',
+        html: `
+          <div class="mockup-toolbar"><span class="mockup-toolbar-title">Promotions on Tracking Page</span><span class="mockup-toolbar-btn"><span class="material-symbols-outlined">add</span>New Offer</span></div>
+          <div class="mockup-table">
+            <div class="mockup-row mockup-row-head"><span>Offer</span><span>Valid Till</span><span>Shown On</span><span>Status</span></div>
+            <div class="mockup-row"><span>10% off PPF renewal</span><span>31 Aug</span><span>Tracking Page</span><span class="badge badge-progress">Live</span></div>
+            <div class="mockup-row"><span>Free wheel alignment check</span><span>15 Sep</span><span>Tracking Page</span><span class="badge badge-progress">Live</span></div>
+            <div class="mockup-row"><span>Monsoon service package</span><span>30 Jun</span><span>Tracking Page</span><span class="badge badge-open">Expired</span></div>
+          </div>`
+      }
+    ]
+  },
+
+  pipeline: {
+    name: 'Enquiries, Bookings & Estimates',
+    icon: 'event_available',
+    color: 'var(--series-5)',
+    tagline: 'From first phone call to a scheduled slot to a quote — before anything is entered twice.',
+    features: [
+      {
+        id: 'enquiries', label: 'Enquiries', icon: 'phone_in_talk',
+        html: `
+          <div class="mockup-toolbar"><span class="mockup-toolbar-title">Enquiries</span><span class="mockup-toolbar-btn"><span class="material-symbols-outlined">add</span>New Enquiry</span></div>
+          <div class="mockup-table">
+            <div class="mockup-row mockup-row-head mockup-row-5"><span>Customer</span><span>Source</span><span>Interested In</span><span>Follow-up</span><span>Status</span></div>
+            <div class="mockup-row mockup-row-5"><span>Priya S.</span><span>WhatsApp</span><span>PPF Coating</span><span>Tomorrow</span><span class="badge badge-progress">Open</span></div>
+            <div class="mockup-row mockup-row-5"><span>Vinod K.</span><span>Walk-in</span><span>General Service</span><span>Today</span><span class="badge badge-qc">Follow-up Due</span></div>
+            <div class="mockup-row mockup-row-5"><span>Anu M.</span><span>Website</span><span>Ceramic Coating</span><span>—</span><span class="badge badge-done">Converted</span></div>
+          </div>`
+      },
+      {
+        id: 'bookings', label: 'Bookings', icon: 'event_available',
+        html: `
+          <div class="mockup-toolbar"><span class="mockup-toolbar-title">Bookings — Today</span><span class="mockup-toolbar-btn"><span class="material-symbols-outlined">add</span>New Booking</span></div>
+          <div class="mockup-widget">
+            <h5>Upcoming Slots</h5>
+            <div class="mockup-schedule-row"><span>Anil Kumar · Maruti Swift</span><span class="mockup-schedule-time">10:00 AM</span></div>
+            <div class="mockup-schedule-row"><span>Fathima N. · Hyundai i20</span><span class="mockup-schedule-time">11:30 AM</span></div>
+            <div class="mockup-schedule-row"><span>George T. · Honda City</span><span class="mockup-schedule-time">02:00 PM</span></div>
+          </div>`
+      },
+      {
+        id: 'baycapacity', label: 'Bay Availability', icon: 'speed',
+        html: `
+          <div class="mockup-widget">
+            <h5>Bay Utilisation — Today</h5>
+            <div class="mockup-progress"><div class="mockup-progress-label"><span>Bay 1</span><span>90%</span></div><div class="mockup-progress-track"><div class="mockup-progress-fill" style="width:90%"></div></div></div>
+            <div class="mockup-progress"><div class="mockup-progress-label"><span>Bay 2</span><span>60%</span></div><div class="mockup-progress-track"><div class="mockup-progress-fill" style="width:60%"></div></div></div>
+            <div class="mockup-progress"><div class="mockup-progress-label"><span>Bay 3</span><span>15%</span></div><div class="mockup-progress-track"><div class="mockup-progress-fill" style="width:15%"></div></div></div>
+            <div class="mockup-progress"><div class="mockup-progress-label"><span>Bay 4</span><span>100%</span></div><div class="mockup-progress-track"><div class="mockup-progress-fill" style="width:100%;background:var(--series-8)"></div></div></div>
+          </div>`
+      },
+      {
+        id: 'estimates', label: 'Estimates', icon: 'request_quote',
+        html: `
+          <div class="mockup-toolbar"><span class="mockup-toolbar-title">Estimates</span><span class="mockup-toolbar-btn"><span class="material-symbols-outlined">add</span>New Estimate</span></div>
+          <div class="mockup-table">
+            <div class="mockup-row mockup-row-head mockup-row-5"><span>Estimate #</span><span>Customer</span><span>Vehicle</span><span>Amount</span><span>Status</span></div>
+            <div class="mockup-row mockup-row-5"><span>EST-0142</span><span>Anil Kumar</span><span>KA-05 MJ 2231</span><span>₹5,200</span><span class="badge badge-progress">Sent</span></div>
+            <div class="mockup-row mockup-row-5"><span>EST-0141</span><span>Priya S.</span><span>KA-03 XY 4410</span><span>₹3,800</span><span class="badge badge-done">Approved</span></div>
+            <div class="mockup-row mockup-row-5"><span>EST-0140</span><span>Vinod K.</span><span>KA-01 AB 9087</span><span>₹1,950</span><span class="badge badge-open">Draft</span></div>
           </div>`
       }
     ]
@@ -195,10 +268,10 @@ const MODULES = {
   },
 
   inventory: {
-    name: 'Inventory & Stock',
+    name: 'Inventory, Parts & Warranties',
     icon: 'inventory_2',
     color: 'var(--series-4)',
-    tagline: "Know what's on the shelf before you promise it to a customer.",
+    tagline: "Know what's on the shelf, and back every part you sell with a printable warranty.",
     features: [
       {
         id: 'catalog', label: 'Parts Catalog', icon: 'inventory_2',
@@ -229,6 +302,48 @@ const MODULES = {
             <div class="mockup-row"><span>Oil filter</span><span>4</span><span>10</span><span class="badge badge-open">Low Stock</span></div>
             <div class="mockup-row"><span>Wiper blade</span><span>2</span><span>8</span><span class="badge badge-open">Low Stock</span></div>
             <div class="mockup-row"><span>Brake pad set</span><span>18</span><span>10</span><span class="badge badge-done">OK</span></div>
+          </div>`
+      },
+      {
+        id: 'warranties', label: 'Warranties', icon: 'verified',
+        html: `
+          <div class="mockup-toolbar"><span class="mockup-toolbar-title">Warranties</span><span class="mockup-toolbar-btn"><span class="material-symbols-outlined">download</span>Download Warranty Card</span></div>
+          <div class="mockup-table">
+            <div class="mockup-row mockup-row-head mockup-row-5"><span>Part</span><span>Serial No.</span><span>Start Date</span><span>Duration</span><span>Status</span></div>
+            <div class="mockup-row mockup-row-5"><span>Brake pad set (front)</span><span>SN-88213</span><span>12 Jul 2026</span><span>6 months</span><span class="badge badge-progress">Active</span></div>
+            <div class="mockup-row mockup-row-5"><span>Battery 12V 65Ah</span><span>SN-44092</span><span>02 Mar 2026</span><span>18 months</span><span class="badge badge-progress">Active</span></div>
+            <div class="mockup-row mockup-row-5"><span>Alternator</span><span>SN-11987</span><span>20 Jan 2025</span><span>12 months</span><span class="badge badge-open">Expired</span></div>
+          </div>`
+      }
+    ]
+  },
+
+  purchasing: {
+    name: 'Purchasing & Vendors',
+    icon: 'shopping_cart',
+    color: 'var(--series-6)',
+    tagline: 'The other half of inventory — order it, receive it, post it to your books.',
+    features: [
+      {
+        id: 'vendors', label: 'Vendors', icon: 'local_shipping',
+        html: `
+          <div class="mockup-toolbar"><span class="mockup-toolbar-title">Vendors</span><span class="mockup-toolbar-btn"><span class="material-symbols-outlined">add</span>Add Vendor</span></div>
+          <div class="mockup-table">
+            <div class="mockup-row mockup-row-head"><span>Vendor</span><span>Category</span><span>Open POs</span><span>Status</span></div>
+            <div class="mockup-row"><span>AutoParts Kerala</span><span>Spares</span><span>2</span><span class="badge badge-done">Active</span></div>
+            <div class="mockup-row"><span>Kochi Lubricants Co.</span><span>Fluids</span><span>1</span><span class="badge badge-done">Active</span></div>
+            <div class="mockup-row"><span>Speedy Tyres</span><span>Tyres</span><span>0</span><span class="badge badge-open">Inactive</span></div>
+          </div>`
+      },
+      {
+        id: 'purchaseorders', label: 'Purchase Orders', icon: 'shopping_cart',
+        html: `
+          <div class="mockup-toolbar"><span class="mockup-toolbar-title">Purchase Orders</span><span class="mockup-toolbar-btn"><span class="material-symbols-outlined">add</span>New PO</span></div>
+          <div class="mockup-table">
+            <div class="mockup-row mockup-row-head mockup-row-5"><span>PO #</span><span>Vendor</span><span>Items</span><span>Amount</span><span>Status</span></div>
+            <div class="mockup-row mockup-row-5"><span>PO-118</span><span>AutoParts Kerala</span><span>4</span><span>₹28,400</span><span class="badge badge-open">Draft</span></div>
+            <div class="mockup-row mockup-row-5"><span>PO-117</span><span>Kochi Lubricants Co.</span><span>2</span><span>₹9,800</span><span class="badge badge-progress">Sent</span></div>
+            <div class="mockup-row mockup-row-5"><span>PO-116</span><span>AutoParts Kerala</span><span>6</span><span>₹41,200</span><span class="badge badge-done">Received</span></div>
           </div>`
       }
     ]
@@ -438,25 +553,11 @@ const MODULES = {
   },
 
   accounting: {
-    name: 'Accounting & Reporting',
+    name: 'Accounting',
     icon: 'account_balance',
-    color: 'var(--series-6)',
+    color: 'var(--series-1)',
     tagline: 'Close the loop from operations to the general ledger.',
     features: [
-      {
-        id: 'reporting', label: 'Management Reporting', icon: 'insights',
-        html: `
-          <div class="mockup-kpis">
-            <div class="mockup-kpi"><div class="mockup-kpi-value">₹4.2L</div><div class="mockup-kpi-label">Total Revenue</div></div>
-            <div class="mockup-kpi"><div class="mockup-kpi-value">₹86K</div><div class="mockup-kpi-label">Outstanding</div></div>
-            <div class="mockup-kpi"><div class="mockup-kpi-value">3.2 hrs</div><div class="mockup-kpi-label">Avg Turnaround</div></div>
-          </div>
-          <div class="mockup-table">
-            <div class="mockup-row mockup-row-head"><span>Technician</span><span>Jobs Completed</span><span>Avg Turnaround</span><span>Revenue</span></div>
-            <div class="mockup-row"><span>R. Kumar</span><span>42</span><span>2.8 hrs</span><span>₹1.1L</span></div>
-            <div class="mockup-row"><span>S. Rao</span><span>38</span><span>3.1 hrs</span><span>₹98K</span></div>
-          </div>`
-      },
       {
         id: 'chartofaccounts', label: 'Chart of Accounts', icon: 'account_tree',
         html: `
@@ -480,8 +581,93 @@ const MODULES = {
     ]
   },
 
+  reports: {
+    name: 'Business Intelligence & Reports',
+    icon: 'insights',
+    color: 'var(--series-4)',
+    tagline: 'Revenue, bay utilisation, technician productivity, and payroll trends — without a spreadsheet.',
+    features: [
+      {
+        id: 'businessoverview', label: 'Business Overview', icon: 'monitoring',
+        html: `
+          <div class="mockup-kpis">
+            <div class="mockup-kpi"><div class="mockup-kpi-value">₹4.2L</div><div class="mockup-kpi-label">Total Revenue</div></div>
+            <div class="mockup-kpi"><div class="mockup-kpi-value">₹86K</div><div class="mockup-kpi-label">Outstanding</div></div>
+            <div class="mockup-kpi"><div class="mockup-kpi-value">3.2 hrs</div><div class="mockup-kpi-label">Avg Turnaround</div></div>
+          </div>`
+      },
+      {
+        id: 'technicianproductivity', label: 'Technician Productivity', icon: 'trending_up',
+        html: `
+          <div class="mockup-table">
+            <div class="mockup-row mockup-row-head"><span>Technician</span><span>Jobs Completed</span><span>Avg Turnaround</span><span>Revenue</span></div>
+            <div class="mockup-row"><span>R. Kumar</span><span>42</span><span>2.8 hrs</span><span>₹1.1L</span></div>
+            <div class="mockup-row"><span>S. Rao</span><span>38</span><span>3.1 hrs</span><span>₹98K</span></div>
+          </div>`
+      }
+    ]
+  },
+
+  assets: {
+    name: 'Asset Management',
+    icon: 'inventory',
+    color: 'var(--series-6)',
+    tagline: 'Track fixed assets from purchase to depreciation.',
+    features: [
+      {
+        id: 'assetregister', label: 'Asset Register', icon: 'inventory',
+        html: `
+          <div class="mockup-table">
+            <div class="mockup-row mockup-row-head"><span>Asset</span><span>Purchase Date</span><span>Value</span><span>Depreciation</span></div>
+            <div class="mockup-row"><span>Hydraulic Lift #2</span><span>04 Jan 2024</span><span>₹3,20,000</span><span>₹64,000</span></div>
+            <div class="mockup-row"><span>Diagnostic Scanner</span><span>18 Jun 2025</span><span>₹1,10,000</span><span>₹22,000</span></div>
+            <div class="mockup-row"><span>Delivery Van — KA07 BC 4521</span><span>02 Mar 2023</span><span>₹8,50,000</span><span>₹2,55,000</span></div>
+          </div>`
+      },
+      {
+        id: 'depreciationruns', label: 'Depreciation Runs', icon: 'trending_down',
+        html: `
+          <div class="mockup-toolbar"><span class="mockup-toolbar-title">Depreciation — FY 2025-26</span><span class="mockup-toolbar-btn"><span class="material-symbols-outlined">play_arrow</span>Run Depreciation</span></div>
+          <div class="mockup-table">
+            <div class="mockup-row mockup-row-head"><span>Asset</span><span>Method</span><span>This Run</span><span>Status</span></div>
+            <div class="mockup-row"><span>Hydraulic Lift #2</span><span>Straight-line</span><span>₹16,000</span><span class="badge badge-done">Posted</span></div>
+            <div class="mockup-row"><span>Diagnostic Scanner</span><span>Straight-line</span><span>₹5,500</span><span class="badge badge-done">Posted</span></div>
+          </div>`
+      }
+    ]
+  },
+
+  marketing: {
+    name: 'Marketing & Customer Engagement',
+    icon: 'campaign',
+    color: 'var(--series-2)',
+    tagline: 'Bring customers back without a spreadsheet of phone numbers.',
+    features: [
+      {
+        id: 'promotions', label: 'Offers & Promotions', icon: 'local_offer',
+        html: `
+          <div class="mockup-toolbar"><span class="mockup-toolbar-title">Offers &amp; Promotions</span><span class="mockup-toolbar-btn"><span class="material-symbols-outlined">add</span>New Offer</span></div>
+          <div class="mockup-table">
+            <div class="mockup-row mockup-row-head"><span>Offer</span><span>Discount</span><span>Valid Till</span><span>Status</span></div>
+            <div class="mockup-row"><span>Monsoon Service Package</span><span>15%</span><span>30 Sep</span><span class="badge badge-progress">Live</span></div>
+            <div class="mockup-row"><span>Festive Detailing Combo</span><span>₹500 off</span><span>05 Nov</span><span class="badge badge-open">Scheduled</span></div>
+          </div>`
+      },
+      {
+        id: 'reminders', label: 'Reminders', icon: 'notifications_active',
+        html: `
+          <div class="mockup-table">
+            <div class="mockup-row mockup-row-head"><span>Type</span><span>Trigger</span><span>Channel</span><span>Status</span></div>
+            <div class="mockup-row"><span>Service Due</span><span>90 days since last service</span><span>WhatsApp</span><span class="badge badge-done">Active</span></div>
+            <div class="mockup-row"><span>PPF Renewal</span><span>11 months after install</span><span>WhatsApp</span><span class="badge badge-done">Active</span></div>
+            <div class="mockup-row"><span>Seasonal Offer</span><span>Manual trigger</span><span>In-app + WhatsApp</span><span class="badge badge-open">Paused</span></div>
+          </div>`
+      }
+    ]
+  },
+
   delivery: {
-    name: 'Delivery & Scheduling',
+    name: 'Delivery',
     icon: 'local_shipping',
     color: 'var(--series-5)',
     tagline: 'Coordinate the last mile alongside the shop floor.',
@@ -494,17 +680,6 @@ const MODULES = {
             <div class="mockup-row"><span>JC-1039</span><span>KA-03 XY 4410</span><span>Today, 5:00 PM</span><span class="badge badge-progress">Out for Delivery</span></div>
             <div class="mockup-row"><span>JC-1035</span><span>KA-01 AB 9087</span><span>Today, 3:30 PM</span><span class="badge badge-done">Delivered</span></div>
             <div class="mockup-row"><span>JC-1044</span><span>KA-05 QW 7712</span><span>Tomorrow, 10:00 AM</span><span class="badge badge-open">Scheduled</span></div>
-          </div>`
-      },
-      {
-        id: 'capacity', label: 'Workshop Capacity', icon: 'speed',
-        html: `
-          <div class="mockup-widget">
-            <h5>Bay Utilisation — Today</h5>
-            <div class="mockup-progress"><div class="mockup-progress-label"><span>Bay 1</span><span>90%</span></div><div class="mockup-progress-track"><div class="mockup-progress-fill" style="width:90%"></div></div></div>
-            <div class="mockup-progress"><div class="mockup-progress-label"><span>Bay 2</span><span>60%</span></div><div class="mockup-progress-track"><div class="mockup-progress-fill" style="width:60%"></div></div></div>
-            <div class="mockup-progress"><div class="mockup-progress-label"><span>Bay 3</span><span>15%</span></div><div class="mockup-progress-track"><div class="mockup-progress-fill" style="width:15%"></div></div></div>
-            <div class="mockup-progress"><div class="mockup-progress-label"><span>Bay 4</span><span>100%</span></div><div class="mockup-progress-track"><div class="mockup-progress-fill" style="width:100%;background:var(--series-8)"></div></div></div>
           </div>`
       }
     ]
