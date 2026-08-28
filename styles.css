@@ -7,7 +7,7 @@
   --text-muted:     #898781;
   --gridline:       #e1e0d9;
   --border:         rgba(11,11,11,0.10);
-  --series-1:       #2a78d6; /* blue */
+  --series-1:       #1B2A49; /* navy */
   --series-2:       #eb6834; /* orange */
   --series-3:       #1baf7a; /* aqua */
   --series-4:       #eda100; /* yellow */
@@ -16,6 +16,12 @@
   --series-7:       #4a3aa7; /* violet */
   --series-8:       #e34948; /* red */
   --good:           #0ca30c;
+  /* Navy is too desaturated for a light color-mix tint to read as "blue"
+     (it just looks gray) — these are brighter, more saturated tints in the
+     same hue, used only as tinted button/badge backgrounds. Text stays the
+     literal navy (--series-1). */
+  --brand-tint:        #dce6f9;
+  --brand-tint-strong: #c1d2f6;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -28,7 +34,7 @@
     --text-muted:     #898781;
     --gridline:       #2c2c2a;
     --border:         rgba(255,255,255,0.10);
-    --series-1:       #3987e5;
+    --series-1:       #4C6FA8; /* navy (brightened for dark-mode contrast) */
     --series-2:       #d95926;
     --series-3:       #199e70;
     --series-4:       #c98500;
@@ -37,6 +43,8 @@
     --series-7:       #9085e9;
     --series-8:       #e66767;
     --good:           #0ca30c;
+    --brand-tint:        color-mix(in srgb, var(--series-1) 32%, transparent);
+    --brand-tint-strong: color-mix(in srgb, var(--series-1) 46%, transparent);
   }
 }
 :root[data-theme="dark"] {
@@ -48,7 +56,7 @@
   --text-muted:     #898781;
   --gridline:       #2c2c2a;
   --border:         rgba(255,255,255,0.10);
-  --series-1:       #3987e5;
+  --series-1:       #4C6FA8; /* navy (brightened for dark-mode contrast) */
   --series-2:       #d95926;
   --series-3:       #199e70;
   --series-4:       #c98500;
@@ -57,6 +65,8 @@
   --series-7:       #9085e9;
   --series-8:       #e66767;
   --good:           #0ca30c;
+  --brand-tint:        color-mix(in srgb, var(--series-1) 32%, transparent);
+  --brand-tint-strong: color-mix(in srgb, var(--series-1) 46%, transparent);
 }
 
 * { box-sizing: border-box; }
@@ -153,10 +163,10 @@ header.nav {
   cursor: pointer;
 }
 .btn-primary {
-  background: color-mix(in srgb, var(--series-1) 14%, transparent);
+  background: var(--brand-tint);
   color: var(--series-1);
 }
-.btn-primary:hover { background: color-mix(in srgb, var(--series-1) 22%, transparent); }
+.btn-primary:hover { background: var(--brand-tint-strong); }
 .btn-ghost {
   border: 1px solid var(--border);
   color: var(--text-primary);
@@ -190,11 +200,11 @@ header.nav {
   margin-bottom: 20px;
 }
 .hero h1 {
-  font-size: 48px;
-  line-height: 1.12;
+  font-size: 60px;
+  line-height: 1.08;
   margin: 0 0 20px;
   font-weight: 800;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 .hero p.sub {
   font-size: 18px;
@@ -243,13 +253,16 @@ header.nav {
   border: 1px solid var(--border);
   border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 20px 60px -20px rgba(11,11,11,0.25);
+  box-shadow:
+    0 1px 2px rgba(11,11,11,0.04),
+    0 8px 16px -8px rgba(11,11,11,0.10),
+    0 32px 64px -24px rgba(11,11,11,0.22);
 }
 .mockup-bar {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 14px;
+  padding: 13px 16px;
   border-bottom: 1px solid var(--border);
   background: var(--page-plane);
 }
@@ -584,6 +597,7 @@ button.mockup-nav-item:hover {
   .hero-grid { grid-template-columns: 1fr; }
   .hero-copy { text-align: center; }
   .hero-actions-left { justify-content: center; }
+  .hero h1 { font-size: 48px; }
   .module-panel-body .mockup-row { grid-template-columns: 1fr 1fr; row-gap: 6px; }
   .module-panel-body .mockup-row span:nth-child(3) { display: none; }
   .module-panel-body .mockup-row-5 { grid-template-columns: 1fr 1fr; }
@@ -603,10 +617,72 @@ button.mockup-nav-item:hover {
   .hero-mockup-frame {
     min-width: 0;
     overflow: hidden;
+    animation: none;
   }
   .hero-mockup-frame .mockup {
     width: 640px;
     transform-origin: top left;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-mockup-frame {
+    animation: mockupDrift 6s ease-in-out infinite;
+  }
+}
+@keyframes mockupDrift {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+/* Hero on-load entrance (above the fold — plays once on load, not scroll-triggered) */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-copy .eyebrow,
+  .hero-copy h1,
+  .hero-copy p.sub,
+  .hero-copy .hero-actions,
+  .hero-visual {
+    opacity: 0;
+    animation: heroFadeUp 0.7s ease forwards;
+  }
+  .hero-copy .eyebrow       { animation-delay: 0ms; }
+  .hero-copy h1             { animation-delay: 80ms; }
+  .hero-copy p.sub          { animation-delay: 160ms; }
+  .hero-copy .hero-actions  { animation-delay: 240ms; }
+  .hero-visual              { animation-delay: 320ms; }
+}
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Scroll-triggered reveal — .reveal for single elements, .reveal-group for
+   grids whose direct children should stagger in one after another. JS adds
+   .is-visible via IntersectionObserver; see index.html/module.html scripts. */
+.reveal,
+.reveal-group > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.is-visible,
+.reveal-group.is-visible > * {
+  opacity: 1;
+  transform: none;
+}
+.reveal-group > *:nth-child(1) { transition-delay: 0ms; }
+.reveal-group > *:nth-child(2) { transition-delay: 60ms; }
+.reveal-group > *:nth-child(3) { transition-delay: 120ms; }
+.reveal-group > *:nth-child(4) { transition-delay: 180ms; }
+.reveal-group > *:nth-child(5) { transition-delay: 240ms; }
+.reveal-group > *:nth-child(n+6) { transition-delay: 300ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-group > * {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }
 
@@ -621,10 +697,10 @@ section {
 }
 .section-head .eyebrow { margin-bottom: 14px; }
 .section-head h2 {
-  font-size: 32px;
+  font-size: 36px;
   margin: 0 0 12px;
   font-weight: 800;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
 }
 .section-head p {
   color: var(--text-secondary);
@@ -838,7 +914,7 @@ footer {
 @media (max-width: 600px) {
   .feature-grid { grid-template-columns: 1fr; }
   .pillar-grid { grid-template-columns: 1fr; }
-  .hero h1 { font-size: 34px; }
+  .hero h1 { font-size: 38px; }
   .hero-actions { flex-direction: column; }
 }
 
