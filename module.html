@@ -36,7 +36,7 @@
 <section class="module-hero">
   <div class="container">
     <a class="back-link" href="index.html#modules"><span class="material-symbols-outlined">arrow_back</span>All modules</a>
-    <div class="module-hero-head">
+    <div class="module-hero-head reveal">
       <div class="module-hero-icon" id="modIcon"></div>
       <div>
         <h1 id="modName">Module</h1>
@@ -48,13 +48,13 @@
 
 <section class="module-demo">
   <div class="container">
-    <div class="module-shell">
+    <div class="module-shell reveal">
       <div class="module-sidebar" id="modSidebar"></div>
       <div class="module-panel">
         <div class="mockup-bar">
-          <span class="mockup-dot" style="background:var(--series-8)"></span>
-          <span class="mockup-dot" style="background:var(--series-4)"></span>
-          <span class="mockup-dot" style="background:var(--good)"></span>
+          <span class="mockup-dot" style="background:#ff5f57"></span>
+          <span class="mockup-dot" style="background:#febc2e"></span>
+          <span class="mockup-dot" style="background:#28c840"></span>
           <span class="mockup-url" id="modUrl">app.qelvix.com</span>
         </div>
         <div class="module-panel-body" id="modBody"></div>
@@ -65,7 +65,7 @@
 
 <section id="contact-cta">
   <div class="container">
-    <div class="cta-band">
+    <div class="cta-band reveal">
       <h2>See this module running your workflow</h2>
       <p>Tell us about your business and we'll walk you through the modules that fit.</p>
       <div class="hero-actions">
@@ -144,6 +144,21 @@
     root.setAttribute('data-theme', current);
     localStorage.setItem('qelvix-theme', current);
   });
+
+  const revealTargets = document.querySelectorAll('.reveal, .reveal-group');
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    revealTargets.forEach(el => el.classList.add('is-visible'));
+  } else {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealTargets.forEach(el => revealObserver.observe(el));
+  }
 
   const navToggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');

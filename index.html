@@ -53,9 +53,9 @@
         <div class="hero-mockup-frame" id="heroMockupFrame">
         <div class="mockup">
           <div class="mockup-bar">
-            <span class="mockup-dot" style="background:var(--series-8)"></span>
-            <span class="mockup-dot" style="background:var(--series-4)"></span>
-            <span class="mockup-dot" style="background:var(--good)"></span>
+            <span class="mockup-dot" style="background:#ff5f57"></span>
+            <span class="mockup-dot" style="background:#febc2e"></span>
+            <span class="mockup-dot" style="background:#28c840"></span>
             <span class="mockup-url" id="mockupUrl">app.qelvix.com/dashboard</span>
           </div>
           <div class="mockup-body">
@@ -128,7 +128,7 @@
                 </div>
                 <div class="mockup-table">
                   <div class="mockup-row mockup-row-head">
-                    <span>Job Card</span><span>Vehicle</span><span>Advisor</span><span>Status</span>
+                    <span>Job Card</span><span>Vehicle</span><span>Technician</span><span>Status</span>
                   </div>
                   <div class="mockup-row">
                     <span>JC-1042</span><span>KA-05 MJ 2231</span><span>R. Kumar</span>
@@ -360,13 +360,13 @@
 
 <section id="modules">
   <div class="container">
-    <div class="section-head">
+    <div class="section-head reveal">
       <span class="eyebrow">What's inside</span>
       <h2>Every module your operation needs — none you don't</h2>
       <p>Each module works standalone or together — turn on what your business needs today,
         add more the moment you need it.</p>
     </div>
-    <div class="feature-grid">
+    <div class="feature-grid reveal-group">
 
       <a class="feature-card" href="module.html?id=jobcards">
         <div class="feature-icon" style="background:var(--series-1)"><span class="material-symbols-outlined">assignment</span></div>
@@ -582,14 +582,14 @@
 
 <section class="alt" id="platform">
   <div class="container">
-    <div class="section-head">
+    <div class="section-head reveal">
       <span class="eyebrow">Why Qelvix</span>
       <h2>Built as a platform, not a point solution</h2>
       <p>Qelvix is a generic multi-business ERP — already running an automotive workshop, a jewellery
         business, and more on the very same platform. Every module adapts to your business, not the
         other way around.</p>
     </div>
-    <div class="pillar-grid">
+    <div class="pillar-grid reveal-group">
       <div class="pillar">
         <div class="pillar-icon">🧩</div>
         <h4>Fits your business, not a template</h4>
@@ -620,7 +620,7 @@
 
 <section id="contact">
   <div class="container">
-    <div class="cta-band">
+    <div class="cta-band reveal">
       <h2>See Qelvix running your workflow</h2>
       <p>Tell us about your business and we'll show you exactly which modules fit — no generic demo, no sales runaround.</p>
       <div class="hero-actions">
@@ -705,6 +705,21 @@
     root.setAttribute('data-theme', current);
     localStorage.setItem('qelvix-theme', current);
   });
+
+  const revealTargets = document.querySelectorAll('.reveal, .reveal-group');
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    revealTargets.forEach(el => el.classList.add('is-visible'));
+  } else {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealTargets.forEach(el => revealObserver.observe(el));
+  }
 
   const heroMockupFrame = document.getElementById('heroMockupFrame');
   const heroMockup = heroMockupFrame.querySelector('.mockup');
