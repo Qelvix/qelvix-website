@@ -237,8 +237,8 @@ html.dialog-open { overflow: hidden; }
 
 .hero-visual { position: relative; padding-bottom: 52px; }
 
-/* Dashboard mock: a product screenshot, dark in both themes. Laid out against its own width
-   (container query), not the viewport, so it scales down wherever it sits. */
+/* Dashboard mock: an interactive sample of the app. It follows the page theme (--mock-* tokens).
+   Laid out against its own width (container query), not the viewport, so it scales down wherever it sits. */
 .dash {
   container: dash / inline-size;
   overflow: hidden;
@@ -281,10 +281,74 @@ html.dialog-open { overflow: hidden; }
   letter-spacing: 0.14em;
   color: var(--mock-muted);
 }
-.dash-body { display: grid; gap: 14px; padding: 20px; }
+.dash-shell { display: grid; grid-template-columns: 64px minmax(0, 1fr); }
+
+/* Screen switcher (a vertical tab list) */
+.dash-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 0;
+  background: var(--mock-chrome);
+  border-right: 1px solid var(--mock-border);
+}
+.dash-tab {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
+  color: var(--mock-muted);
+  cursor: pointer;
+  transition: background-color 0.15s, color 0.15s;
+}
+.dash-tab .icon { width: 20px; height: 20px; }
+.dash-tab:hover { background: var(--mock-tile); color: var(--mock-strong); }
+.dash-tab[aria-selected="true"] { background: var(--mock-active-bg); color: var(--mock-accent-text); }
+.home .dash-tab:focus-visible { outline-offset: 2px; }
+
+/* Screens share one grid cell, so the mock keeps the height of the tallest one when you switch. */
+.dash-main { display: grid; min-width: 0; padding: 20px; }
+.dash-view {
+  grid-area: 1 / 1;
+  display: grid;
+  gap: 14px;
+  align-content: start;
+  min-width: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0s linear 0.2s;
+}
+.dash-view.is-active { opacity: 1; visibility: visible; transition-delay: 0s; }
+.dash-view:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; border-radius: 16px; }
+
+.dash-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.dash-title { font: 600 17px/1.2 var(--font-head); letter-spacing: -0.02em; color: var(--mock-strong); }
+.dash-sub { margin-top: 3px; font-size: 12px; color: var(--mock-muted); }
+.dash-btn {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: var(--mock-accent);
+  color: var(--mock-on-accent);
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.dash-btn .icon { width: 14px; height: 14px; stroke-width: 2.5; }
+
 .dash-kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.dash-kpis-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .dash-kpi,
-.dash-panel {
+.dash-card,
+.dash-tablewrap {
   border: 1px solid var(--mock-border);
   border-radius: 16px;
   background: var(--mock-tile);
@@ -300,9 +364,10 @@ html.dialog-open { overflow: hidden; }
 }
 .dash-kpi.is-ready .dash-kpi-value { color: var(--st-ready-fg); }
 .dash-kpi.is-late .dash-kpi-value { color: var(--st-late-fg); }
-.dash-panels { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 12px; }
-.dash-panel { padding: 16px; min-width: 0; }
-.dash-panel-title {
+
+.dash-cards { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 12px; }
+.dash-card { padding: 16px; min-width: 0; }
+.dash-card-title {
   margin-bottom: 12px;
   font-size: 11.5px;
   font-weight: 700;
@@ -311,19 +376,23 @@ html.dialog-open { overflow: hidden; }
   text-transform: uppercase;
   color: var(--mock-muted);
 }
+.dash-card-title.is-spaced { margin-top: 20px; }
+
 .dash-job {
   display: flex;
+  flex-wrap: wrap;            /* the status pill drops below the plate only when there is genuinely no room */
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 6px 12px;
   padding-block: 11px;
   border-top: 1px solid var(--mock-border);
 }
 .dash-job:first-child { padding-top: 0; border-top: 0; }
 .dash-job:last-child { padding-bottom: 0; }
-.dash-job-main { min-width: 0; }
+.dash-job-main { flex: 1 1 0; min-width: 102px; }
 .dash-plate {
   display: block;
+  white-space: nowrap;
   font-size: 13.5px;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -339,7 +408,9 @@ html.dialog-open { overflow: hidden; }
   font-size: 12px;
   color: var(--mock-muted);
 }
+
 .status {
+  display: inline-block;
   flex: none;
   padding: 6px 10px;
   border-radius: 999px;
@@ -352,6 +423,9 @@ html.dialog-open { overflow: hidden; }
 .status-progress { color: var(--st-progress-fg); background: var(--st-progress-bg); }
 .status-check { color: var(--st-check-fg); background: var(--st-check-bg); }
 .status-late { color: var(--st-late-fg); background: var(--st-late-bg); }
+.status-idle { color: var(--st-idle-fg); background: var(--st-idle-bg); }
+
+.dash-bays { display: flex; flex-direction: column; }
 .bay + .bay { margin-top: 16px; }
 .bay-head {
   display: flex;
@@ -362,9 +436,8 @@ html.dialog-open { overflow: hidden; }
   color: var(--mock-text);
 }
 .bay-track { height: 8px; overflow: hidden; border-radius: 999px; background: var(--mock-track); }
-.bay-fill { display: block; width: var(--w); height: 100%; border-radius: inherit; background: var(--mock-accent); }
-.bay-fill.is-high { background: var(--st-check-fg); }
-.dash-panel:has(.bay) { display: flex; flex-direction: column; }
+.bay-fill { display: block; width: var(--w); height: 100%; border-radius: inherit; background: var(--mock-bar); }
+.bay-fill.is-high { background: var(--mock-warn); }
 .bay-legend {
   display: flex;
   align-items: center;
@@ -374,19 +447,93 @@ html.dialog-open { overflow: hidden; }
   font-size: 12px;
   color: var(--mock-muted);
 }
-.bay-legend i { display: block; width: 8px; height: 8px; border-radius: 50%; background: var(--st-check-fg); }
+.bay-legend i { display: block; width: 8px; height: 8px; border-radius: 50%; background: var(--mock-warn); }
 
-@container dash (max-width: 560px) {
-  .dash-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .dash-panels { grid-template-columns: minmax(0, 1fr); }
+/* Tables (real <table>s, so they stay readable to assistive tech) */
+.dash-tablewrap { overflow: hidden; }
+.dash-table { width: 100%; border-collapse: collapse; text-align: left; }
+.dash-table th,
+.dash-table td {
+  padding: 11px 14px;
+  border-top: 1px solid var(--mock-border);
+  white-space: nowrap;
+  color: var(--mock-text);
 }
-@container dash (max-width: 400px) {
-  .dash-body { padding: 14px; }
+.dash-table thead th {
+  border-top: 0;
+  background: var(--mock-chrome);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mock-muted);
+}
+.dash-table tbody tr:first-child td { border-top: 0; }
+.dash-table td:first-child { font-weight: 600; color: var(--mock-strong); }
+
+/* Job card worksheet */
+.dash-steps { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+.dash-steps li {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--mock-muted);
+}
+.dash-steps li::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border: 2px solid var(--mock-dot);
+  border-radius: 50%;
+}
+.dash-steps .is-done { color: var(--mock-text); }
+.dash-steps .is-done::before { border-color: var(--mock-accent); background: var(--mock-accent); }
+.dash-steps .is-current { color: var(--mock-strong); font-weight: 700; }
+.dash-steps .is-current::before { border-color: var(--mock-accent); box-shadow: 0 0 0 3px var(--mock-active-bg); }
+.dash-lines li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-block: 8px;
+  border-top: 1px solid var(--mock-border);
+  font-size: 12.5px;
+  color: var(--mock-text);
+}
+.dash-lines li:first-child { padding-top: 0; border-top: 0; }
+.dash-lines li:last-child { padding-bottom: 0; }
+.dash-value { flex: none; color: var(--mock-muted); font-variant-numeric: tabular-nums; }
+
+/* The hero mock is ~580px wide on desktop, so the full layout has to hold down to ~520px.
+   Only the 5-column invoices table needs to drop a column earlier (.opt3). */
+@container dash (max-width: 640px) {
+  .dash-table .opt3 { display: none; }
+}
+@container dash (max-width: 520px) {
+  .dash-table .opt { display: none; }
+  .dash-cards { grid-template-columns: minmax(0, 1fr); }
+  .dash-kpis,
+  .dash-kpis-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dash-kpis-3 .dash-kpi:last-child { grid-column: 1 / -1; }
+}
+@container dash (max-width: 430px) {
+  /* On a phone each screen takes its natural height instead of the tallest one's. */
+  .dash-view:not(.is-active) { display: none; }
+  .dash-table .opt2 { display: none; }
+  .dash-shell { grid-template-columns: 56px minmax(0, 1fr); }
+  .dash-main { padding: 12px; }
   .dash-chrome { padding: 10px 12px; gap: 10px; }
   .dash-dots { display: none; }
   .dash-url { padding: 7px 10px; font-size: 11px; }
   .dash-sample { padding: 6px 8px; letter-spacing: 0.1em; }
   .dash-kpi-value { font-size: 26px; }
+  .dash-table th,
+  .dash-table td { padding: 10px; }
+  .dash-card { padding: 14px; }
+  .dash-job { column-gap: 8px; }
+  .status { padding: 6px 9px; }
+  .dash-title { font-size: 15px; }
 }
 
 /* Floating white card, overlapping the bottom-left of the dashboard */
@@ -493,20 +640,6 @@ html.dialog-open { overflow: hidden; }
 }
 .module-link .icon { transition: translate 0.2s; }
 .module-card:hover .module-link .icon { translate: 4px 0; }
-
-/* Featured cards (01, 06): ink in light mode, --surface-2 with an accent border in dark mode */
-.module-card.is-featured {
-  border-color: var(--feat-border);
-  background: var(--feat-bg);
-  color: var(--feat-text);
-}
-.module-card.is-featured:hover { border-color: var(--feat-accent); }
-.module-card.is-featured h3 { color: var(--feat-text); }
-.module-card.is-featured > p { color: var(--feat-muted); }
-.module-card.is-featured .module-num { color: var(--feat-accent); }
-.module-card.is-featured .module-icon { background: var(--feat-chip); color: var(--feat-accent); }
-.module-card.is-featured .module-points .icon { color: var(--feat-accent); }
-.module-card.is-featured .module-link { border-top-color: var(--feat-divider); color: var(--feat-accent); }
 
 .also { margin-top: 56px; }
 .also-title {
@@ -889,8 +1022,9 @@ html.dialog-open { overflow: hidden; }
   .cta { padding-block: 72px; }
   .hero { padding-top: 40px; }
   .module-card { padding: 26px; border-radius: 24px; }
-  .hero-visual { padding-bottom: 64px; }
-  .float-card { left: 12px; right: 12px; max-width: none; }
+  /* The mock is short on some screens here, so the card sits in the flow and only overlaps its bottom padding. */
+  .hero-visual { padding-bottom: 0; }
+  .float-card { position: relative; left: auto; bottom: auto; max-width: none; margin: -12px 12px 0; }
   .point { grid-template-columns: 44px minmax(0, 1fr); gap: 0 14px; }
   .footer-inner { flex-direction: column; align-items: flex-start; }
 
