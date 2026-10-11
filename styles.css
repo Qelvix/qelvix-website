@@ -1,72 +1,170 @@
-:root {
+/* ==========================================================================
+   Qelvix theme tokens
+   --------------------------------------------------------------------------
+   Every colour used by index.html / home.css is defined in this block;
+   components only ever reference these variables.
+
+   The active theme is the data-theme attribute on <html>:
+     - set before first paint by the inline script in index.html's <head>
+       (saved choice from localStorage, otherwise the OS prefers-color-scheme),
+     - changed by the toggle button in the nav.
+   <html> without the attribute renders the light theme.
+
+   Sections below: core tokens (the ones that switch with the theme), effects,
+   featured-card tokens, then "fixed" tokens (dashboard mock, phone mock and
+   floating card look the same in both themes on purpose).
+   ========================================================================== */
+:root,
+:root[data-theme="light"] {
   color-scheme: light;
-  --surface-1:      #fcfcfb;
-  --page-plane:      #f9f9f7;
-  --text-primary:   #0b0b0b;
-  --text-secondary: #52514e;
-  --text-muted:     #898781;
-  --gridline:       #e1e0d9;
-  --border:         rgba(11,11,11,0.10);
-  --series-1:       #1B2A49; /* navy */
-  --series-2:       #eb6834; /* orange */
-  --series-3:       #1baf7a; /* aqua */
-  --series-4:       #eda100; /* yellow */
-  --series-5:       #e87ba4; /* magenta */
-  --series-6:       #008300; /* green */
-  --series-7:       #4a3aa7; /* violet */
-  --series-8:       #e34948; /* red */
-  --good:           #0ca30c;
+
+  --font-head: "Sora", "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-body: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Core */
+  --bg:            #FFFFFF;
+  --bg-alt:        #F3F5F8;
+  --surface:       #FFFFFF;
+  --surface-2:     #F3F5F8;
+  --border:        #DDE3EC;
+  --border-strong: #7B8798;  /* control outlines: 3:1+ against --bg and --surface-2 */
+  --text:          #1F2937;
+  --text-strong:   #0A1019;
+  --muted:         #4A5568;
+  --accent:        #14B8A6;  /* fills and decoration. Not for text on light backgrounds (2.5:1) */
+  --accent-text:   #0F766E;  /* accent as text/icon on --bg, --bg-alt, --surface (5:1+) */
+  --accent-hover:  #2DD4BF;
+  --on-accent:     #0A1019;  /* text on --accent (7.7:1) */
+  --focus:         var(--accent-text);
+
+  /* Effects */
+  --nav-bg:        color-mix(in srgb, var(--bg) 90%, transparent);
+  --scrim:         rgba(10, 16, 25, 0.55);
+  --shadow-card:   0 1px 2px rgba(10, 16, 25, 0.04), 0 18px 40px -24px rgba(10, 16, 25, 0.20);
+  --shadow-lift:   0 1px 2px rgba(10, 16, 25, 0.05), 0 28px 56px -24px rgba(10, 16, 25, 0.30);
+  --shadow-float:  0 2px 6px rgba(10, 16, 25, 0.08), 0 24px 48px -16px rgba(10, 16, 25, 0.35);
+  --shadow-dialog: 0 32px 80px -24px rgba(10, 16, 25, 0.45);
+
+  /* Featured module cards (01, 06): ink with white text in light mode */
+  --feat-bg:      #0A1019;
+  --feat-border:  transparent;
+  --feat-text:    #FFFFFF;
+  --feat-muted:   #A9B4C4;
+  --feat-accent:  #2DD4BF;
+  --feat-chip:    rgba(255, 255, 255, 0.08);
+  --feat-divider: rgba(255, 255, 255, 0.14);
+
+  /* Dashboard mock: outer edge and shadow follow the page theme, the rest is fixed */
+  --mock-ring:    rgba(10, 16, 25, 0.14);
+  --mock-shadow:  0 2px 6px rgba(10, 16, 25, 0.08), 0 44px 80px -32px rgba(10, 16, 25, 0.50);
+
+  /* Fixed: dashboard mock (a product screenshot, dark in both themes) */
+  --mock-chrome:  #0A1019;
+  --mock-bg:      #101826;
+  --mock-tile:    #151F2F;
+  --mock-border:  rgba(255, 255, 255, 0.09);
+  --mock-text:    #E8ECF2;
+  --mock-strong:  #FFFFFF;
+  --mock-muted:   #9AA7BA;
+  --mock-accent:  #2DD4BF;
+  --mock-track:   rgba(255, 255, 255, 0.10);
+  --mock-dot:     rgba(255, 255, 255, 0.18);
+  --st-ready-fg:    #5EEAD4;  --st-ready-bg:    rgba(45, 212, 191, 0.14);
+  --st-progress-fg: #8DBBFF;  --st-progress-bg: rgba(96, 165, 250, 0.16);
+  --st-check-fg:    #FCD34D;  --st-check-bg:    rgba(251, 191, 36, 0.14);
+  --st-late-fg:     #FCA5A5;  --st-late-bg:     rgba(248, 113, 113, 0.16);
+
+  /* Fixed: phone mock and floating card (white in both themes) */
+  --phone-bg:          #FFFFFF;
+  --phone-alt:         #F3F5F8;
+  --phone-text:        #1F2937;
+  --phone-strong:      #0A1019;
+  --phone-muted:       #4A5568;
+  --phone-line:        #C5CEDB;
+  --phone-border:      #DDE3EC;
+  --phone-accent:      #14B8A6;
+  --phone-accent-text: #0F766E;
+  --phone-on-accent:   #0A1019;
+  --phone-bezel:       #0A1019;
+
+  /* Legacy palette: module.html and modules-data.js still use these names */
+  --series-1: #1B2A49; /* navy */
+  --series-2: #eb6834; /* orange */
+  --series-3: #1baf7a; /* aqua */
+  --series-4: #eda100; /* yellow */
+  --series-5: #e87ba4; /* magenta */
+  --series-6: #008300; /* green */
+  --series-7: #4a3aa7; /* violet */
+  --series-8: #e34948; /* red */
+  --good:     #0ca30c;
   /* Navy is too desaturated for a light color-mix tint to read as "blue"
-     (it just looks gray) — these are brighter, more saturated tints in the
-     same hue, used only as tinted button/badge backgrounds. Text stays the
-     literal navy (--series-1). */
+     (it just looks gray), so these are brighter tints in the same hue, used
+     only as tinted button/badge backgrounds. Text stays the literal navy. */
   --brand-tint:        #dce6f9;
   --brand-tint-strong: #c1d2f6;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:where(:not([data-theme="light"])) {
-    color-scheme: dark;
-    --surface-1:      #1a1a19;
-    --page-plane:      #0d0d0d;
-    --text-primary:   #ffffff;
-    --text-secondary: #c3c2b7;
-    --text-muted:     #898781;
-    --gridline:       #2c2c2a;
-    --border:         rgba(255,255,255,0.10);
-    --series-1:       #4C6FA8; /* navy (brightened for dark-mode contrast) */
-    --series-2:       #d95926;
-    --series-3:       #199e70;
-    --series-4:       #c98500;
-    --series-5:       #d55181;
-    --series-6:       #008300;
-    --series-7:       #9085e9;
-    --series-8:       #e66767;
-    --good:           #0ca30c;
-    --brand-tint:        color-mix(in srgb, var(--series-1) 32%, transparent);
-    --brand-tint-strong: color-mix(in srgb, var(--series-1) 46%, transparent);
-  }
-}
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --surface-1:      #1a1a19;
-  --page-plane:      #0d0d0d;
-  --text-primary:   #ffffff;
-  --text-secondary: #c3c2b7;
-  --text-muted:     #898781;
-  --gridline:       #2c2c2a;
-  --border:         rgba(255,255,255,0.10);
-  --series-1:       #4C6FA8; /* navy (brightened for dark-mode contrast) */
-  --series-2:       #d95926;
-  --series-3:       #199e70;
-  --series-4:       #c98500;
-  --series-5:       #d55181;
-  --series-6:       #008300;
-  --series-7:       #9085e9;
-  --series-8:       #e66767;
-  --good:           #0ca30c;
+
+  /* Core */
+  --bg:            #0A1019;
+  --bg-alt:        #0D1420;
+  --surface:       #101826;
+  --surface-2:     #151F2F;
+  --border:        rgba(255, 255, 255, 0.09);
+  --border-strong: #66758B;
+  --text:          #E8ECF2;
+  --text-strong:   #FFFFFF;
+  --muted:         #9AA7BA;
+  --accent:        #2DD4BF;
+  --accent-text:   #2DD4BF;
+  --accent-hover:  #5EEAD4;
+  --on-accent:     #0A1019;
+
+  /* Effects */
+  --scrim:         rgba(0, 0, 0, 0.66);
+  --shadow-card:   0 1px 2px rgba(0, 0, 0, 0.40), 0 18px 40px -24px rgba(0, 0, 0, 0.70);
+  --shadow-lift:   0 1px 2px rgba(0, 0, 0, 0.50), 0 28px 56px -24px rgba(0, 0, 0, 0.85);
+  --shadow-float:  0 2px 6px rgba(0, 0, 0, 0.40), 0 24px 48px -16px rgba(0, 0, 0, 0.70);
+  --shadow-dialog: 0 32px 80px -24px rgba(0, 0, 0, 0.80);
+
+  /* Featured module cards: --surface-2 with an accent border in dark mode */
+  --feat-bg:      var(--surface-2);
+  --feat-border:  var(--accent);
+  --feat-text:    var(--text-strong);
+  --feat-muted:   var(--muted);
+  --feat-accent:  var(--accent);
+  --feat-chip:    color-mix(in srgb, var(--accent) 14%, transparent);
+  --feat-divider: var(--border);
+
+  --mock-ring:    rgba(255, 255, 255, 0.12);
+  --mock-shadow:  0 2px 6px rgba(0, 0, 0, 0.40), 0 44px 80px -32px rgba(0, 0, 0, 0.85);
+
+  /* Legacy palette (brightened for dark-mode contrast) */
+  --series-1: #4C6FA8; /* navy */
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --series-4: #c98500;
+  --series-5: #d55181;
+  --series-6: #008300;
+  --series-7: #9085e9;
+  --series-8: #e66767;
+  --good:     #0ca30c;
   --brand-tint:        color-mix(in srgb, var(--series-1) 32%, transparent);
   --brand-tint-strong: color-mix(in srgb, var(--series-1) 46%, transparent);
+}
+
+/* Legacy names used by the module.html styles below, mapped onto the tokens so
+   that page follows the same light/dark palette. Declared on :root so they
+   resolve against whichever theme is active. */
+:root {
+  --surface-1:      var(--surface);
+  --page-plane:     var(--bg-alt);
+  --text-primary:   var(--text-strong);
+  --text-secondary: var(--text);
+  --text-muted:     var(--muted);
+  --gridline:       var(--border);
 }
 
 * { box-sizing: border-box; }
@@ -74,8 +172,8 @@
 html, body {
   margin: 0;
   padding: 0;
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-  background: var(--page-plane);
+  font-family: var(--font-body);
+  background: var(--bg);
   color: var(--text-primary);
   scroll-behavior: smooth;
 }
@@ -174,45 +272,7 @@ header.nav {
 }
 .btn-ghost:hover { background: var(--gridline); }
 
-/* Hero */
-.hero {
-  padding: 72px 0 72px;
-}
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: center;
-  margin-bottom: 64px;
-}
-.hero-copy { text-align: left; }
-.hero-actions-left { justify-content: flex-start; }
-.eyebrow {
-  display: inline-block;
-  font-size: 12px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--series-1);
-  font-weight: 700;
-  background: color-mix(in srgb, var(--series-1) 12%, transparent);
-  padding: 6px 12px;
-  border-radius: 999px;
-  margin-bottom: 20px;
-}
-.hero h1 {
-  font-size: 60px;
-  line-height: 1.08;
-  margin: 0 0 20px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-}
-.hero p.sub {
-  font-size: 18px;
-  color: var(--text-secondary);
-  max-width: 640px;
-  margin: 0 auto 32px;
-  line-height: 1.55;
-}
+/* Button row under the module.html call-to-action */
 .hero-actions {
   display: flex;
   gap: 14px;
@@ -220,44 +280,7 @@ header.nav {
   margin-bottom: 56px;
 }
 
-/* Stat row */
-.stat-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  max-width: 900px;
-  margin: 0 auto;
-}
-.stat-tile {
-  background: var(--surface-1);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 20px 16px;
-  text-align: center;
-}
-.stat-value {
-  font-size: 32px;
-  font-weight: 800;
-  color: var(--text-primary);
-  line-height: 1;
-}
-.stat-label {
-  font-size: 13px;
-  color: var(--text-muted);
-  margin-top: 6px;
-}
-
-/* Hero product mockup */
-.mockup {
-  background: var(--surface-1);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow:
-    0 1px 2px rgba(11,11,11,0.04),
-    0 8px 16px -8px rgba(11,11,11,0.10),
-    0 32px 64px -24px rgba(11,11,11,0.22);
-}
+/* Browser-bar chrome, KPI tiles, tables and badges (module.html demo panels) */
 .mockup-bar {
   display: flex;
   align-items: center;
@@ -277,67 +300,6 @@ header.nav {
   font-size: 12px;
   color: var(--text-muted);
   font-family: ui-monospace, monospace;
-}
-.mockup-body {
-  display: flex;
-}
-.mockup-sidebar {
-  width: 48px;
-  background: var(--page-plane);
-  border-right: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 0;
-}
-.mockup-nav-item {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.55;
-  border: none;
-  background: none;
-  padding: 0;
-  font-family: inherit;
-  color: var(--text-secondary);
-}
-.mockup-nav-item .material-symbols-outlined {
-  font-size: 19px;
-}
-button.mockup-nav-item {
-  cursor: pointer;
-  opacity: 0.7;
-  transition: opacity 0.15s, background 0.15s;
-}
-button.mockup-nav-item:hover {
-  opacity: 1;
-  background: var(--gridline);
-}
-.mockup-nav-item.active {
-  background: color-mix(in srgb, var(--series-1) 16%, transparent);
-  color: var(--series-1);
-  opacity: 1;
-}
-.mockup-main {
-  flex: 1;
-  padding: 18px;
-  min-width: 0;
-  position: relative;
-}
-.mockup-panel {
-  display: none;
-  animation: mockupFadeIn 0.18s ease;
-}
-.mockup-panel.active {
-  display: block;
-}
-@keyframes mockupFadeIn {
-  from { opacity: 0; transform: translateY(2px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 .mockup-kpis {
   display: grid;
@@ -594,10 +556,6 @@ button.mockup-nav-item:hover {
 .mockup-row-actions .material-symbols-outlined { font-size: 15px; }
 
 @media (max-width: 900px) {
-  .hero-grid { grid-template-columns: 1fr; }
-  .hero-copy { text-align: center; }
-  .hero-actions-left { justify-content: center; }
-  .hero h1 { font-size: 48px; }
   .module-panel-body .mockup-row { grid-template-columns: 1fr 1fr; row-gap: 6px; }
   .module-panel-body .mockup-row span:nth-child(3) { display: none; }
   .module-panel-body .mockup-row-5 { grid-template-columns: 1fr 1fr; }
@@ -608,82 +566,25 @@ button.mockup-nav-item:hover {
   .module-panel-body .mockup-kpis-5 .mockup-kpi:nth-child(5) { display: none; }
   .module-panel-body .mockup-kpis-bar { grid-template-columns: repeat(2, 1fr); }
   .module-panel-body .mockup-widget-grid { grid-template-columns: 1fr; }
-
-  /* Hero mockup: scale the whole "screenshot" down as one unit instead of
-     reflowing its internal grid — keeps it a wide rectangle on phones. */
-  .hero-visual {
-    min-width: 0;
-  }
-  .hero-mockup-frame {
-    min-width: 0;
-    overflow: hidden;
-    animation: none;
-  }
-  .hero-mockup-frame .mockup {
-    width: 640px;
-    transform-origin: top left;
-  }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .hero-mockup-frame {
-    animation: mockupDrift 6s ease-in-out infinite;
-  }
-}
-@keyframes mockupDrift {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-8px); }
-}
-
-/* Hero on-load entrance (above the fold — plays once on load, not scroll-triggered) */
-@media (prefers-reduced-motion: no-preference) {
-  .hero-copy .eyebrow,
-  .hero-copy h1,
-  .hero-copy p.sub,
-  .hero-copy .hero-actions,
-  .hero-visual {
-    opacity: 0;
-    animation: heroFadeUp 0.7s ease forwards;
-  }
-  .hero-copy .eyebrow       { animation-delay: 0ms; }
-  .hero-copy h1             { animation-delay: 80ms; }
-  .hero-copy p.sub          { animation-delay: 160ms; }
-  .hero-copy .hero-actions  { animation-delay: 240ms; }
-  .hero-visual              { animation-delay: 320ms; }
-}
-@keyframes heroFadeUp {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: none; }
-}
-
-/* Scroll-triggered reveal — .reveal for single elements, .reveal-group for
-   grids whose direct children should stagger in one after another. JS adds
-   .is-visible via IntersectionObserver; see index.html/module.html scripts.
-   Content is visible by default: it is only hidden once the script has put
-   html.reveal-ready in place (right after the observer that will reveal it is
-   running), so a script error, blocked storage or an old browser can never
-   leave a section invisible. */
-.reveal-ready .reveal,
-.reveal-ready .reveal-group > * {
+/* Scroll-triggered reveal. JS adds .is-visible via IntersectionObserver; see the
+   index.html/module.html scripts. Content is visible by default: it is only hidden
+   once the script has put html.reveal-ready in place (right after the observer that
+   will reveal it is running), so a script error, blocked storage or an old browser
+   can never leave a section invisible. (Staggered grids live in home.css.) */
+.reveal-ready .reveal {
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
-.reveal-ready .reveal.is-visible,
-.reveal-ready .reveal-group.is-visible > * {
+.reveal-ready .reveal.is-visible {
   opacity: 1;
   transform: none;
 }
-.reveal-group > *:nth-child(1) { transition-delay: 0ms; }
-.reveal-group > *:nth-child(2) { transition-delay: 60ms; }
-.reveal-group > *:nth-child(3) { transition-delay: 120ms; }
-.reveal-group > *:nth-child(4) { transition-delay: 180ms; }
-.reveal-group > *:nth-child(5) { transition-delay: 240ms; }
-.reveal-group > *:nth-child(n+6) { transition-delay: 300ms; }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal-ready .reveal,
-  .reveal-ready .reveal-group > * {
+  .reveal-ready .reveal {
     opacity: 1;
     transform: none;
     transition: none;
@@ -693,146 +594,6 @@ button.mockup-nav-item:hover {
 /* Section shell */
 section {
   padding: 80px 0;
-}
-.section-head {
-  text-align: center;
-  max-width: 640px;
-  margin: 0 auto 48px;
-}
-.section-head .eyebrow { margin-bottom: 14px; }
-.section-head h2 {
-  font-size: 36px;
-  margin: 0 0 12px;
-  font-weight: 800;
-  letter-spacing: -0.015em;
-}
-.section-head p {
-  color: var(--text-secondary);
-  font-size: 16px;
-  line-height: 1.6;
-  margin: 0;
-}
-
-section.alt {
-  background: var(--surface-1);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-
-/* Feature grid */
-.feature-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-.feature-card {
-  display: block;
-  background: var(--surface-1);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 24px;
-  transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
-}
-.feature-card:hover {
-  border-color: var(--series-1);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px -16px rgba(11,11,11,0.25);
-}
-.feature-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  margin-bottom: 16px;
-  color: #fff;
-}
-.feature-card h3 {
-  font-size: 17px;
-  margin: 0 0 8px;
-  font-weight: 700;
-}
-.feature-card p {
-  font-size: 14px;
-  color: var(--text-secondary);
-  line-height: 1.55;
-  margin: 0 0 12px;
-}
-.feature-card ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  font-size: 13px;
-  color: var(--text-muted);
-}
-.feature-card li {
-  padding: 4px 0;
-  display: flex;
-  gap: 8px;
-  align-items: flex-start;
-}
-.feature-card li::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--good);
-  margin-top: 6px;
-  flex-shrink: 0;
-}
-.feature-card-cta {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  margin-top: 16px;
-  padding-top: 14px;
-  border-top: 1px solid var(--border);
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--series-1);
-}
-.feature-card-cta .material-symbols-outlined {
-  font-size: 15px;
-  transition: transform 0.15s;
-}
-.feature-card:hover .feature-card-cta .material-symbols-outlined {
-  transform: translateX(3px);
-}
-
-/* Platform pillars */
-.pillar-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-}
-.pillar {
-  text-align: center;
-  padding: 20px 12px;
-}
-.pillar-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background: var(--surface-1);
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 14px;
-  font-size: 20px;
-}
-.pillar h4 {
-  font-size: 14px;
-  margin: 0 0 6px;
-  font-weight: 700;
-}
-.pillar p {
-  font-size: 13px;
-  color: var(--text-secondary);
-  margin: 0;
-  line-height: 1.5;
 }
 
 /* CTA band */
@@ -857,18 +618,6 @@ section.alt {
 .cta-band .btn-primary {
   border-color: color-mix(in srgb, var(--series-1) 30%, transparent);
 }
-.contact-details {
-  margin-top: 28px;
-  font-size: 14px;
-  color: var(--text-secondary);
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.contact-details a { text-decoration: underline; text-decoration-color: var(--border); }
-.contact-details a:hover { text-decoration-color: var(--series-1); }
-.contact-sep { opacity: 0.5; }
 
 /* Footer */
 footer {
@@ -888,9 +637,6 @@ footer {
 }
 
 @media (max-width: 900px) {
-  .feature-grid { grid-template-columns: repeat(2, 1fr); }
-  .pillar-grid { grid-template-columns: repeat(2, 1fr); }
-  .stat-row { grid-template-columns: repeat(2, 1fr); }
   .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
   .nav-links {
     display: flex;
@@ -916,9 +662,6 @@ footer {
   }
 }
 @media (max-width: 600px) {
-  .feature-grid { grid-template-columns: 1fr; }
-  .pillar-grid { grid-template-columns: 1fr; }
-  .hero h1 { font-size: 38px; }
   .hero-actions { flex-direction: column; }
 }
 
