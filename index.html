@@ -67,6 +67,11 @@
     <symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></symbol>
+    <symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></symbol>
+    <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></symbol>
   </defs>
 </svg>
 
@@ -114,57 +119,200 @@
       </div>
 
       <div class="hero-visual">
-        <div class="dash" role="img" aria-label="Sample Qelvix dashboard. Jobs today 14, in progress 6, ready 4, overdue 1. An active job cards list with status, and bay capacity at 90, 60 and 35 percent.">
-          <div class="dash-chrome" aria-hidden="true">
-            <span class="dash-dots"><i></i><i></i><i></i></span>
-            <span class="dash-url">app.qelvix.in/dashboard</span>
+        <div class="dash" role="group" aria-label="Sample Qelvix app with sample data. Use the icons on the left to switch screens.">
+          <div class="dash-chrome">
+            <span class="dash-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="dash-url" id="dashUrl">app.qelvix.in/dashboard</span>
             <span class="dash-sample">SAMPLE DATA</span>
           </div>
-          <div class="dash-body" aria-hidden="true">
-            <div class="dash-kpis">
-              <div class="dash-kpi"><p class="dash-kpi-label">Jobs today</p><p class="dash-kpi-value">14</p></div>
-              <div class="dash-kpi"><p class="dash-kpi-label">In progress</p><p class="dash-kpi-value">6</p></div>
-              <div class="dash-kpi is-ready"><p class="dash-kpi-label">Ready</p><p class="dash-kpi-value">4</p></div>
-              <div class="dash-kpi is-late"><p class="dash-kpi-label">Overdue</p><p class="dash-kpi-value">1</p></div>
+          <div class="dash-shell">
+            <div class="dash-side" role="tablist" aria-label="Sample app screens" aria-orientation="vertical">
+              <button class="dash-tab" type="button" role="tab" id="tab-dashboard" aria-controls="view-dashboard" aria-selected="true" aria-label="Dashboard" title="Dashboard" data-url="app.qelvix.in/dashboard"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-grid"/></svg></button>
+              <button class="dash-tab" type="button" role="tab" id="tab-jobcards" aria-controls="view-jobcards" aria-selected="false" tabindex="-1" aria-label="Job cards" title="Job cards" data-url="app.qelvix.in/job-cards"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-clipboard"/></svg></button>
+              <button class="dash-tab" type="button" role="tab" id="tab-worksheet" aria-controls="view-worksheet" aria-selected="false" tabindex="-1" aria-label="Job card worksheet" title="Job card worksheet" data-url="app.qelvix.in/job-cards/JC-1041"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-wrench"/></svg></button>
+              <button class="dash-tab" type="button" role="tab" id="tab-customers" aria-controls="view-customers" aria-selected="false" tabindex="-1" aria-label="Customers" title="Customers" data-url="app.qelvix.in/customers"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-users"/></svg></button>
+              <button class="dash-tab" type="button" role="tab" id="tab-employees" aria-controls="view-employees" aria-selected="false" tabindex="-1" aria-label="Employees" title="Employees" data-url="app.qelvix.in/employees"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-briefcase"/></svg></button>
+              <button class="dash-tab" type="button" role="tab" id="tab-attendance" aria-controls="view-attendance" aria-selected="false" tabindex="-1" aria-label="Attendance" title="Attendance" data-url="app.qelvix.in/attendance"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-calendar"/></svg></button>
+              <button class="dash-tab" type="button" role="tab" id="tab-invoices" aria-controls="view-invoices" aria-selected="false" tabindex="-1" aria-label="Invoices" title="Invoices" data-url="app.qelvix.in/invoices"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-receipt"/></svg></button>
             </div>
-            <div class="dash-panels">
-              <div class="dash-panel">
-                <p class="dash-panel-title">Active job cards</p>
-                <ul class="dash-jobs">
-                  <li class="dash-job">
-                    <div class="dash-job-main"><span class="dash-plate">KL-07 CD 2231</span><span class="dash-job-meta">JC-1042 · Maruti Swift VDi</span></div>
-                    <span class="status status-ready">Ready</span>
-                  </li>
-                  <li class="dash-job">
-                    <div class="dash-job-main"><span class="dash-plate">KL-01 AB 9087</span><span class="dash-job-meta">JC-1041 · Hyundai Creta</span></div>
-                    <span class="status status-progress">In progress</span>
-                  </li>
-                  <li class="dash-job">
-                    <div class="dash-job-main"><span class="dash-plate">KL-05 XY 4410</span><span class="dash-job-meta">JC-1039 · Honda City</span></div>
-                    <span class="status status-check">Quality check</span>
-                  </li>
-                  <li class="dash-job">
-                    <div class="dash-job-main"><span class="dash-plate">KL-08 QW 7712</span><span class="dash-job-meta">JC-1038 · Toyota Innova</span></div>
-                    <span class="status status-late">Overdue</span>
-                  </li>
-                </ul>
+
+            <div class="dash-main">
+
+              <div class="dash-view is-active" role="tabpanel" id="view-dashboard" aria-labelledby="tab-dashboard" tabindex="0">
+                <div class="dash-kpis">
+                  <div class="dash-kpi"><p class="dash-kpi-label">Jobs today</p><p class="dash-kpi-value">14</p></div>
+                  <div class="dash-kpi"><p class="dash-kpi-label">In progress</p><p class="dash-kpi-value">6</p></div>
+                  <div class="dash-kpi is-ready"><p class="dash-kpi-label">Ready</p><p class="dash-kpi-value">4</p></div>
+                  <div class="dash-kpi is-late"><p class="dash-kpi-label">Overdue</p><p class="dash-kpi-value">1</p></div>
+                </div>
+                <div class="dash-cards">
+                  <div class="dash-card">
+                    <p class="dash-card-title">Active job cards</p>
+                    <ul class="dash-jobs">
+                      <li class="dash-job">
+                        <div class="dash-job-main"><span class="dash-plate">KL-07 CD 2231</span><span class="dash-job-meta">JC-1042 · Maruti Swift VDi</span></div>
+                        <span class="status status-ready">Ready</span>
+                      </li>
+                      <li class="dash-job">
+                        <div class="dash-job-main"><span class="dash-plate">KL-01 AB 9087</span><span class="dash-job-meta">JC-1041 · Hyundai Creta</span></div>
+                        <span class="status status-progress">In progress</span>
+                      </li>
+                      <li class="dash-job">
+                        <div class="dash-job-main"><span class="dash-plate">KL-05 XY 4410</span><span class="dash-job-meta">JC-1039 · Honda City</span></div>
+                        <span class="status status-check">Quality check</span>
+                      </li>
+                      <li class="dash-job">
+                        <div class="dash-job-main"><span class="dash-plate">KL-08 QW 7712</span><span class="dash-job-meta">JC-1038 · Toyota Innova</span></div>
+                        <span class="status status-late">Overdue</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="dash-card dash-bays">
+                    <p class="dash-card-title">Bay capacity</p>
+                    <div class="bay">
+                      <div class="bay-head"><span>Bay 1</span><span>90%</span></div>
+                      <div class="bay-track"><span class="bay-fill is-high" style="--w:90%"></span></div>
+                    </div>
+                    <div class="bay">
+                      <div class="bay-head"><span>Bay 2</span><span>60%</span></div>
+                      <div class="bay-track"><span class="bay-fill" style="--w:60%"></span></div>
+                    </div>
+                    <div class="bay">
+                      <div class="bay-head"><span>Bay 3</span><span>35%</span></div>
+                      <div class="bay-track"><span class="bay-fill" style="--w:35%"></span></div>
+                    </div>
+                    <p class="bay-legend"><i></i>Near capacity</p>
+                  </div>
+                </div>
               </div>
-              <div class="dash-panel">
-                <p class="dash-panel-title">Bay capacity</p>
-                <div class="bay">
-                  <div class="bay-head"><span>Bay 1</span><span>90%</span></div>
-                  <div class="bay-track"><span class="bay-fill is-high" style="--w:90%"></span></div>
+
+              <div class="dash-view" role="tabpanel" id="view-jobcards" aria-labelledby="tab-jobcards" tabindex="0">
+                <div class="dash-toolbar"><p class="dash-title">Job cards</p><span class="dash-btn"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-plus"/></svg>New job card</span></div>
+                <div class="dash-tablewrap">
+                  <table class="dash-table">
+                    <thead><tr><th class="opt2">Job card</th><th>Vehicle</th><th class="opt">Assigned to</th><th>Status</th></tr></thead>
+                    <tbody>
+                      <tr><td class="opt2">JC-1042</td><td>KL-07 CD 2231</td><td class="opt">R. Kumar</td><td><span class="status status-ready">Ready</span></td></tr>
+                      <tr><td class="opt2">JC-1041</td><td>KL-01 AB 9087</td><td class="opt">S. Rao</td><td><span class="status status-progress">In progress</span></td></tr>
+                      <tr><td class="opt2">JC-1039</td><td>KL-05 XY 4410</td><td class="opt">A. Sharma</td><td><span class="status status-check">Quality check</span></td></tr>
+                      <tr><td class="opt2">JC-1038</td><td>KL-08 QW 7712</td><td class="opt">M. Nair</td><td><span class="status status-late">Overdue</span></td></tr>
+                    </tbody>
+                  </table>
                 </div>
-                <div class="bay">
-                  <div class="bay-head"><span>Bay 2</span><span>60%</span></div>
-                  <div class="bay-track"><span class="bay-fill" style="--w:60%"></span></div>
-                </div>
-                <div class="bay">
-                  <div class="bay-head"><span>Bay 3</span><span>35%</span></div>
-                  <div class="bay-track"><span class="bay-fill" style="--w:35%"></span></div>
-                </div>
-                <p class="bay-legend"><i></i>Near capacity</p>
               </div>
+
+              <div class="dash-view" role="tabpanel" id="view-worksheet" aria-labelledby="tab-worksheet" tabindex="0">
+                <div class="dash-toolbar">
+                  <div>
+                    <p class="dash-title">JC-1041 · KL-01 AB 9087</p>
+                    <p class="dash-sub">Fathima N. · Hyundai Creta · Bay 2</p>
+                  </div>
+                  <span class="status status-progress">In progress</span>
+                </div>
+                <ol class="dash-steps">
+                  <li class="is-done">Open</li>
+                  <li class="is-done">Assigned</li>
+                  <li class="is-current">In progress</li>
+                  <li>Quality check</li>
+                  <li>Delivered</li>
+                </ol>
+                <div class="dash-cards">
+                  <div class="dash-card">
+                    <p class="dash-card-title">Complaint and inspection</p>
+                    <ul class="dash-lines">
+                      <li>Engine noise on cold start</li>
+                      <li>Front-left brake pad worn</li>
+                    </ul>
+                    <p class="dash-card-title is-spaced">Labour</p>
+                    <ul class="dash-lines">
+                      <li><span>General service</span><span class="dash-value">1.5 hrs</span></li>
+                      <li><span>Brake pad replacement</span><span class="dash-value">0.8 hrs</span></li>
+                    </ul>
+                  </div>
+                  <div class="dash-card">
+                    <p class="dash-card-title">Parts used</p>
+                    <ul class="dash-lines">
+                      <li><span>Brake pad set (front)</span><span class="dash-value">₹1,450</span></li>
+                      <li><span>Engine oil 5W-30 (4L)</span><span class="dash-value">₹2,100</span></li>
+                    </ul>
+                    <p class="dash-card-title is-spaced">Assigned to</p>
+                    <ul class="dash-lines">
+                      <li><span>S. Rao</span><span class="dash-value">Technician</span></li>
+                      <li><span>Bay 2</span><span class="dash-value">60% busy</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dash-view" role="tabpanel" id="view-customers" aria-labelledby="tab-customers" tabindex="0">
+                <div class="dash-toolbar"><p class="dash-title">Customers</p><span class="dash-btn"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-plus"/></svg>Add customer</span></div>
+                <div class="dash-tablewrap">
+                  <table class="dash-table">
+                    <thead><tr><th>Name</th><th class="opt2">Phone</th><th class="opt">Email</th><th>City</th></tr></thead>
+                    <tbody>
+                      <tr><td>Anil Kumar</td><td class="opt2">98470 xxxxx</td><td class="opt">anil@mail.com</td><td>Kochi</td></tr>
+                      <tr><td>Fathima N.</td><td class="opt2">90480 xxxxx</td><td class="opt">fathima@mail.com</td><td>Kozhikode</td></tr>
+                      <tr><td>George T.</td><td class="opt2">94470 xxxxx</td><td class="opt">george@mail.com</td><td>Thrissur</td></tr>
+                      <tr><td>Priya S.</td><td class="opt2">96330 xxxxx</td><td class="opt">priya@mail.com</td><td>Kochi</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="dash-view" role="tabpanel" id="view-employees" aria-labelledby="tab-employees" tabindex="0">
+                <div class="dash-kpis">
+                  <div class="dash-kpi"><p class="dash-kpi-label">Total employees</p><p class="dash-kpi-value">54</p></div>
+                  <div class="dash-kpi is-ready"><p class="dash-kpi-label">Active</p><p class="dash-kpi-value">48</p></div>
+                  <div class="dash-kpi"><p class="dash-kpi-label">Departments</p><p class="dash-kpi-value">6</p></div>
+                  <div class="dash-kpi"><p class="dash-kpi-label">New this month</p><p class="dash-kpi-value">4</p></div>
+                </div>
+                <div class="dash-tablewrap">
+                  <table class="dash-table">
+                    <thead><tr><th>Name</th><th class="opt2">Job title</th><th class="opt">Department</th><th>Status</th></tr></thead>
+                    <tbody>
+                      <tr><td>R. Kumar</td><td class="opt2">Technician</td><td class="opt">Workshop</td><td><span class="status status-ready">Active</span></td></tr>
+                      <tr><td>S. Rao</td><td class="opt2">Sr. technician</td><td class="opt">Workshop</td><td><span class="status status-ready">Active</span></td></tr>
+                      <tr><td>A. Sharma</td><td class="opt2">Service advisor</td><td class="opt">Front office</td><td><span class="status status-ready">Active</span></td></tr>
+                      <tr><td>M. Nair</td><td class="opt2">Technician</td><td class="opt">Workshop</td><td><span class="status status-idle">On leave</span></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="dash-view" role="tabpanel" id="view-attendance" aria-labelledby="tab-attendance" tabindex="0">
+                <div class="dash-kpis dash-kpis-3">
+                  <div class="dash-kpi is-ready"><p class="dash-kpi-label">Present today</p><p class="dash-kpi-value">43</p></div>
+                  <div class="dash-kpi"><p class="dash-kpi-label">On leave</p><p class="dash-kpi-value">3</p></div>
+                  <div class="dash-kpi"><p class="dash-kpi-label">Late arrivals</p><p class="dash-kpi-value">2</p></div>
+                </div>
+                <div class="dash-tablewrap">
+                  <table class="dash-table">
+                    <thead><tr><th>Employee</th><th class="opt">Role</th><th class="opt2">Clock in</th><th>Status</th></tr></thead>
+                    <tbody>
+                      <tr><td>R. Kumar</td><td class="opt">Technician</td><td class="opt2">09:02 AM</td><td><span class="status status-ready">Present</span></td></tr>
+                      <tr><td>S. Rao</td><td class="opt">Technician</td><td class="opt2">09:41 AM</td><td><span class="status status-check">Late</span></td></tr>
+                      <tr><td>A. Sharma</td><td class="opt">Advisor</td><td class="opt2">08:55 AM</td><td><span class="status status-ready">Present</span></td></tr>
+                      <tr><td>M. Nair</td><td class="opt">Technician</td><td class="opt2">—</td><td><span class="status status-idle">On leave</span></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div class="dash-view" role="tabpanel" id="view-invoices" aria-labelledby="tab-invoices" tabindex="0">
+                <div class="dash-toolbar"><p class="dash-title">Invoices</p><span class="dash-btn"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-plus"/></svg>New invoice</span></div>
+                <div class="dash-tablewrap">
+                  <table class="dash-table">
+                    <thead><tr><th>Invoice</th><th class="opt">Customer</th><th class="opt3">Job card</th><th>Amount</th><th>Status</th></tr></thead>
+                    <tbody>
+                      <tr><td>INV-2231</td><td class="opt">Anil Kumar</td><td class="opt3">JC-1035</td><td>₹4,850</td><td><span class="status status-ready">Paid</span></td></tr>
+                      <tr><td>INV-2230</td><td class="opt">Fathima N.</td><td class="opt3">JC-1033</td><td>₹2,100</td><td><span class="status status-check">Partial</span></td></tr>
+                      <tr><td>INV-2229</td><td class="opt">George T.</td><td class="opt3">JC-1031</td><td>₹6,400</td><td><span class="status status-late">Unpaid</span></td></tr>
+                      <tr><td>INV-2228</td><td class="opt">Priya S.</td><td class="opt3">JC-1028</td><td>₹1,750</td><td><span class="status status-ready">Paid</span></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -201,7 +349,7 @@
 
       <div class="module-grid reveal-group">
 
-        <a class="module-card is-featured" href="module.html?id=jobcards" aria-labelledby="mod-jobcards" style="--i:0">
+        <a class="module-card" href="module.html?id=jobcards" aria-labelledby="mod-jobcards" style="--i:0">
           <div class="module-top">
             <span class="module-num" aria-hidden="true">01</span>
             <span class="module-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-clipboard"/></svg></span>
@@ -281,7 +429,7 @@
           <span class="module-link">See it in action <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
         </a>
 
-        <a class="module-card is-featured" href="module.html?id=accounting" aria-labelledby="mod-accounting" style="--i:5">
+        <a class="module-card" href="module.html?id=accounting" aria-labelledby="mod-accounting" style="--i:5">
           <div class="module-top">
             <span class="module-num" aria-hidden="true">06</span>
             <span class="module-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-landmark"/></svg></span>
@@ -531,6 +679,34 @@
     revealTargets.forEach(el => revealObserver.observe(el));
     root.classList.add('reveal-ready');
   }
+
+  // ---- Hero sample app -----------------------------------------------------------------------
+  // The dashboard mock is a vertical tab list: click a screen icon, or use the arrow keys, Home and End.
+  const dashTabs = [...document.querySelectorAll('.dash-tab')];
+  const dashViews = document.querySelectorAll('.dash-view');
+  const dashUrl = document.getElementById('dashUrl');
+  function selectDashTab(tab, moveFocus) {
+    dashTabs.forEach(t => {
+      const isOn = t === tab;
+      t.setAttribute('aria-selected', String(isOn));
+      t.tabIndex = isOn ? 0 : -1;
+    });
+    dashViews.forEach(view => view.classList.toggle('is-active', view.id === tab.getAttribute('aria-controls')));
+    dashUrl.textContent = tab.dataset.url;
+    if (moveFocus) tab.focus();
+  }
+  dashTabs.forEach((tab, i) => {
+    tab.addEventListener('click', () => selectDashTab(tab, false));
+    tab.addEventListener('keydown', (e) => {
+      const last = dashTabs.length - 1;
+      const prev = i === 0 ? last : i - 1;
+      const next = i === last ? 0 : i + 1;
+      const target = { ArrowUp: prev, ArrowLeft: prev, ArrowDown: next, ArrowRight: next, Home: 0, End: last }[e.key];
+      if (target === undefined) return;
+      e.preventDefault();
+      selectDashTab(dashTabs[target], true);
+    });
+  });
 
   // ---- Mobile menu ---------------------------------------------------------------------------
   const navToggle = document.getElementById('navToggle');

@@ -10,9 +10,9 @@
      - changed by the toggle button in the nav.
    <html> without the attribute renders the light theme.
 
-   Sections below: core tokens (the ones that switch with the theme), effects,
-   featured-card tokens, then "fixed" tokens (dashboard mock, phone mock and
-   floating card look the same in both themes on purpose).
+   Sections below: core tokens, effects, the dashboard-mock tokens (they follow the
+   theme too), then "fixed" tokens (the phone mock and floating card are white in
+   both themes on purpose).
    ========================================================================== */
 :root,
 :root[data-theme="light"] {
@@ -45,34 +45,29 @@
   --shadow-float:  0 2px 6px rgba(10, 16, 25, 0.08), 0 24px 48px -16px rgba(10, 16, 25, 0.35);
   --shadow-dialog: 0 32px 80px -24px rgba(10, 16, 25, 0.45);
 
-  /* Featured module cards (01, 06): ink with white text in light mode */
-  --feat-bg:      #0A1019;
-  --feat-border:  transparent;
-  --feat-text:    #FFFFFF;
-  --feat-muted:   #A9B4C4;
-  --feat-accent:  #2DD4BF;
-  --feat-chip:    rgba(255, 255, 255, 0.08);
-  --feat-divider: rgba(255, 255, 255, 0.14);
-
-  /* Dashboard mock: outer edge and shadow follow the page theme, the rest is fixed */
-  --mock-ring:    rgba(10, 16, 25, 0.14);
-  --mock-shadow:  0 2px 6px rgba(10, 16, 25, 0.08), 0 44px 80px -32px rgba(10, 16, 25, 0.50);
-
-  /* Fixed: dashboard mock (a product screenshot, dark in both themes) */
-  --mock-chrome:  #0A1019;
-  --mock-bg:      #101826;
-  --mock-tile:    #151F2F;
-  --mock-border:  rgba(255, 255, 255, 0.09);
-  --mock-text:    #E8ECF2;
-  --mock-strong:  #FFFFFF;
-  --mock-muted:   #9AA7BA;
-  --mock-accent:  #2DD4BF;
-  --mock-track:   rgba(255, 255, 255, 0.10);
-  --mock-dot:     rgba(255, 255, 255, 0.18);
-  --st-ready-fg:    #5EEAD4;  --st-ready-bg:    rgba(45, 212, 191, 0.14);
-  --st-progress-fg: #8DBBFF;  --st-progress-bg: rgba(96, 165, 250, 0.16);
-  --st-check-fg:    #FCD34D;  --st-check-bg:    rgba(251, 191, 36, 0.14);
-  --st-late-fg:     #FCA5A5;  --st-late-bg:     rgba(248, 113, 113, 0.16);
+  /* Dashboard mock: follows the page theme */
+  --mock-ring:        rgba(10, 16, 25, 0.14);
+  --mock-shadow:      0 2px 6px rgba(10, 16, 25, 0.08), 0 44px 80px -32px rgba(10, 16, 25, 0.40);
+  --mock-chrome:      #F3F5F8;
+  --mock-bg:          #FFFFFF;
+  --mock-tile:        #F3F5F8;
+  --mock-border:      #DDE3EC;
+  --mock-text:        #1F2937;
+  --mock-strong:      #0A1019;
+  --mock-muted:       #4A5568;
+  --mock-accent:      #14B8A6;
+  --mock-accent-text: #0F766E;
+  --mock-bar:         #0D9488;
+  --mock-warn:        #D97706;
+  --mock-active-bg:   rgba(20, 184, 166, 0.14);
+  --mock-track:       #D5DCE6;
+  --mock-dot:         #C5CEDB;
+  --st-ready-fg:    #0F766E;  --st-ready-bg:    rgba(20, 184, 166, 0.12);
+  --st-progress-fg: #1D4ED8;  --st-progress-bg: rgba(59, 130, 246, 0.10);
+  --st-check-fg:    #92400E;  --st-check-bg:    rgba(245, 158, 11, 0.18);
+  --st-late-fg:     #B91C1C;  --st-late-bg:     rgba(239, 68, 68, 0.10);
+  --st-idle-fg:     #4A5568;  --st-idle-bg:     rgba(74, 85, 104, 0.10);
+  --mock-on-accent: #0A1019;  /* fixed: text on the mock's accent buttons, both themes */
 
   /* Fixed: phone mock and floating card (white in both themes) */
   --phone-bg:          #FFFFFF;
@@ -129,17 +124,28 @@
   --shadow-float:  0 2px 6px rgba(0, 0, 0, 0.40), 0 24px 48px -16px rgba(0, 0, 0, 0.70);
   --shadow-dialog: 0 32px 80px -24px rgba(0, 0, 0, 0.80);
 
-  /* Featured module cards: --surface-2 with an accent border in dark mode */
-  --feat-bg:      var(--surface-2);
-  --feat-border:  var(--accent);
-  --feat-text:    var(--text-strong);
-  --feat-muted:   var(--muted);
-  --feat-accent:  var(--accent);
-  --feat-chip:    color-mix(in srgb, var(--accent) 14%, transparent);
-  --feat-divider: var(--border);
-
-  --mock-ring:    rgba(255, 255, 255, 0.12);
-  --mock-shadow:  0 2px 6px rgba(0, 0, 0, 0.40), 0 44px 80px -32px rgba(0, 0, 0, 0.85);
+  /* Dashboard mock: follows the page theme */
+  --mock-ring:        rgba(255, 255, 255, 0.12);
+  --mock-shadow:      0 2px 6px rgba(0, 0, 0, 0.40), 0 44px 80px -32px rgba(0, 0, 0, 0.85);
+  --mock-chrome:      #0A1019;
+  --mock-bg:          #101826;
+  --mock-tile:        #151F2F;
+  --mock-border:      rgba(255, 255, 255, 0.09);
+  --mock-text:        #E8ECF2;
+  --mock-strong:      #FFFFFF;
+  --mock-muted:       #9AA7BA;
+  --mock-accent:      #2DD4BF;
+  --mock-accent-text: #2DD4BF;
+  --mock-bar:         #2DD4BF;
+  --mock-warn:        #FCD34D;
+  --mock-active-bg:   rgba(45, 212, 191, 0.16);
+  --mock-track:       rgba(255, 255, 255, 0.10);
+  --mock-dot:         rgba(255, 255, 255, 0.18);
+  --st-ready-fg:    #5EEAD4;  --st-ready-bg:    rgba(45, 212, 191, 0.14);
+  --st-progress-fg: #8DBBFF;  --st-progress-bg: rgba(96, 165, 250, 0.16);
+  --st-check-fg:    #FCD34D;  --st-check-bg:    rgba(251, 191, 36, 0.14);
+  --st-late-fg:     #FCA5A5;  --st-late-bg:     rgba(248, 113, 113, 0.16);
+  --st-idle-fg:     #9AA7BA;  --st-idle-bg:     rgba(154, 167, 186, 0.14);
 
   /* Legacy palette (brightened for dark-mode contrast) */
   --series-1: #4C6FA8; /* navy */
