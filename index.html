@@ -698,18 +698,23 @@
 <script>
   const toggle = document.getElementById('themeToggle');
   const root = document.documentElement;
-  const stored = localStorage.getItem('qelvix-theme');
+  // Remembering the theme is a nicety: storage can be blocked (private mode, some in-app browsers) and a throw
+  // here used to stop the rest of this script from running.
+  let stored = null;
+  try { stored = localStorage.getItem('qelvix-theme'); } catch (e) { /* storage unavailable */ }
   root.setAttribute('data-theme', stored === 'dark' ? 'dark' : 'light');
   toggle.addEventListener('click', () => {
     const current = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', current);
-    localStorage.setItem('qelvix-theme', current);
+    try { localStorage.setItem('qelvix-theme', current); } catch (e) { /* storage unavailable */ }
   });
 
+  // Scroll reveal. Content stays visible unless this works (see the .reveal-ready note in styles.css).
+  // threshold must stay 0: a ratio such as 0.15 can never be reached by an element taller than about 6.7
+  // viewports, and the module grid stacks to ~6000px on a phone — it used to stay invisible there forever.
+  // The bottom margin makes things appear a little after they enter, not while they are still a sliver.
   const revealTargets = document.querySelectorAll('.reveal, .reveal-group');
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    revealTargets.forEach(el => el.classList.add('is-visible'));
-  } else {
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -717,8 +722,9 @@
           revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15 });
+    }, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
     revealTargets.forEach(el => revealObserver.observe(el));
+    root.classList.add('reveal-ready');
   }
 
   const heroMockupFrame = document.getElementById('heroMockupFrame');

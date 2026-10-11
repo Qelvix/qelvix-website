@@ -658,15 +658,19 @@ button.mockup-nav-item:hover {
 
 /* Scroll-triggered reveal — .reveal for single elements, .reveal-group for
    grids whose direct children should stagger in one after another. JS adds
-   .is-visible via IntersectionObserver; see index.html/module.html scripts. */
-.reveal,
-.reveal-group > * {
+   .is-visible via IntersectionObserver; see index.html/module.html scripts.
+   Content is visible by default: it is only hidden once the script has put
+   html.reveal-ready in place (right after the observer that will reveal it is
+   running), so a script error, blocked storage or an old browser can never
+   leave a section invisible. */
+.reveal-ready .reveal,
+.reveal-ready .reveal-group > * {
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
-.reveal.is-visible,
-.reveal-group.is-visible > * {
+.reveal-ready .reveal.is-visible,
+.reveal-ready .reveal-group.is-visible > * {
   opacity: 1;
   transform: none;
 }
@@ -678,8 +682,8 @@ button.mockup-nav-item:hover {
 .reveal-group > *:nth-child(n+6) { transition-delay: 300ms; }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal,
-  .reveal-group > * {
+  .reveal-ready .reveal,
+  .reveal-ready .reveal-group > * {
     opacity: 1;
     transform: none;
     transition: none;
