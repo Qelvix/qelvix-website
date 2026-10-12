@@ -12,7 +12,7 @@
 
    Sections below: core tokens, effects, the dashboard-mock tokens (they follow the
    theme too), then "fixed" tokens (the phone mock and floating card are white in
-   both themes on purpose).
+   both themes on purpose), then the WhatsApp mock tokens (these follow the theme).
    ========================================================================== */
 :root,
 :root[data-theme="light"] {
@@ -82,6 +82,25 @@
   --phone-on-accent:   #0A1019;
   --phone-bezel:       #0A1019;
 
+  /* WhatsApp mock: follows the page theme and uses WhatsApp's own light and dark palettes */
+  --wa-header:      #008069;
+  --wa-header-text: #FFFFFF;
+  --wa-header-sub:  #F7FCFB;
+  --wa-avatar:      #DFE5E7;
+  --wa-avatar-text: #3B4A54;
+  --wa-chat:        #EFEAE2;
+  --wa-in:          #FFFFFF;
+  --wa-out:         #D9FDD3;
+  --wa-text:        #111B21;
+  --wa-meta:        #54656F;  /* timestamps and the day chip (5:1+ on the bubbles) */
+  --wa-action:      #0A6EA3;  /* button labels (5.5:1 on --wa-in) */
+  --wa-tick:        #1B84BD;
+  --wa-chip:        #FFFFFF;
+  --wa-input:       #FFFFFF;
+  --wa-input-text:  #54656F;
+  --wa-dots:        #76858F;
+  --wa-shadow:      0 1px 0.5px rgba(11, 20, 26, 0.13);
+
   /* Legacy palette: module.html and modules-data.js still use these names */
   --series-1: #1B2A49; /* navy */
   --series-2: #eb6834; /* orange */
@@ -146,6 +165,25 @@
   --st-check-fg:    #FCD34D;  --st-check-bg:    rgba(251, 191, 36, 0.14);
   --st-late-fg:     #FCA5A5;  --st-late-bg:     rgba(248, 113, 113, 0.16);
   --st-idle-fg:     #9AA7BA;  --st-idle-bg:     rgba(154, 167, 186, 0.14);
+
+  /* WhatsApp mock */
+  --wa-header:      #202C33;
+  --wa-header-text: #E9EDEF;
+  --wa-header-sub:  #A9B7BF;
+  --wa-avatar:      #3B4A54;
+  --wa-avatar-text: #E9EDEF;
+  --wa-chat:        #0B141A;
+  --wa-in:          #202C33;
+  --wa-out:         #005C4B;
+  --wa-text:        #E9EDEF;
+  --wa-meta:        #C3D2CC;
+  --wa-action:      #53BDEB;
+  --wa-tick:        #53BDEB;
+  --wa-chip:        #182229;
+  --wa-input:       #2A3942;
+  --wa-input-text:  #A9B7BF;
+  --wa-dots:        #8696A0;
+  --wa-shadow:      0 1px 0.5px rgba(0, 0, 0, 0.35);
 
   /* Legacy palette (brightened for dark-mode contrast) */
   --series-1: #4C6FA8; /* navy */

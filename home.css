@@ -6,7 +6,7 @@
    a new colour is needed).
 
    Contents: base · header · buttons · hero · facts · modules · platform ·
-             call to action · footer · demo dialog · motion · responsive
+             whatsapp · call to action · footer · demo dialog · motion · responsive
    ========================================================================== */
 
 html { scroll-padding-top: 96px; }
@@ -58,6 +58,18 @@ html.dialog-open { overflow: hidden; }
 .section-alt { background: var(--bg-alt); }
 
 .sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+/* Text for screen readers only (for example, who said what in the WhatsApp demo). */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
 .icon {
   width: 1.25em;
   height: 1.25em;
@@ -804,6 +816,193 @@ html.dialog-open { overflow: hidden; }
 .point h3 { margin-bottom: 8px; font-size: 1.3rem; }
 .point p { color: var(--muted); }
 
+/* ---------- WhatsApp simulation ---------- */
+/* A scripted chat (see the script in index.html). It follows the page theme via the --wa-* tokens. */
+.wa-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr);
+  gap: clamp(48px, 8vw, 120px);
+  align-items: center;
+}
+.wa-copy .eyebrow { margin-bottom: 20px; }
+.wa-copy h2 { margin-bottom: 20px; }
+
+.wa-tabs { display: grid; gap: 12px; margin-top: 40px; }
+.wa-tab {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 2px 18px;
+  align-items: center;
+  width: 100%;
+  padding: 18px 22px;
+  border: 1.5px solid var(--border);
+  border-radius: 24px;
+  background: var(--surface);
+  font: inherit;
+  text-align: left;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.2s;
+}
+.wa-tab:hover { border-color: var(--border-strong); }
+.wa-tab[aria-selected="true"] { border-color: var(--accent-text); box-shadow: var(--shadow-card); }
+.wa-tab-icon {
+  grid-row: 1 / span 2;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  background: var(--surface-2);
+  color: var(--accent-text);
+  transition: background-color 0.15s, color 0.15s;
+}
+.wa-tab-icon .icon { width: 24px; height: 24px; }
+.wa-tab[aria-selected="true"] .wa-tab-icon { background: var(--accent); color: var(--on-accent); }
+.wa-tab-title { font: 600 1.15rem/1.3 var(--font-head); letter-spacing: -0.02em; color: var(--text-strong); }
+.wa-tab-desc { font-size: 0.95rem; line-height: 1.5; color: var(--muted); }
+
+.wa-stage { display: grid; justify-items: center; gap: 20px; }
+.wa-phone { width: min(100%, 372px); }
+.wa-screen {
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  overflow: hidden;
+  border-radius: 36px;
+  background: var(--wa-chat);
+  color: var(--wa-text);
+  font-size: 14.5px;
+  line-height: 1.4;
+}
+.wa-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 16px 12px 10px;
+  background: var(--wa-header);
+  color: var(--wa-header-text);
+}
+.wa-header .icon { width: 24px; height: 24px; }
+.wa-avatar {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--wa-avatar);
+  font: 600 1.05rem/1 var(--font-head);
+  color: var(--wa-avatar-text);
+}
+.wa-name { font-size: 1.05rem; font-weight: 700; line-height: 1.25; }
+.wa-sub { font-size: 0.78rem; line-height: 1.3; color: var(--wa-header-sub); }
+
+.wa-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 0;
+  padding: 12px 12px 16px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--wa-dots) transparent;
+}
+.wa-body:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; }
+.wa-day {
+  align-self: center;
+  margin-bottom: 4px;
+  padding: 4px 12px;
+  border-radius: 8px;
+  background: var(--wa-chip);
+  box-shadow: var(--wa-shadow);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--wa-meta);
+}
+.wa-msg { display: flex; flex-direction: column; gap: 4px; max-width: 88%; }
+.wa-msg.has-actions { width: 88%; }
+.wa-in { align-self: flex-start; }
+.wa-out { align-self: flex-end; }
+.wa-bubble {
+  padding: 7px 10px 5px;
+  border-radius: 10px;
+  background: var(--wa-in);
+  box-shadow: var(--wa-shadow);
+}
+.wa-in .wa-bubble { border-top-left-radius: 2px; }
+.wa-out .wa-bubble { border-top-right-radius: 2px; background: var(--wa-out); }
+.wa-text { white-space: pre-line; overflow-wrap: anywhere; }
+.wa-meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  margin-top: 2px;
+  font-size: 0.72rem;
+  line-height: 1.2;
+  color: var(--wa-meta);
+}
+.wa-meta .icon { width: 16px; height: 16px; stroke-width: 2.25; color: var(--wa-tick); }
+
+/* Reply buttons and the link button sit under the bubble, as WhatsApp draws them */
+.wa-actions { display: grid; gap: 4px; }
+.wa-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--wa-in);
+  box-shadow: var(--wa-shadow);
+  font: 600 1em/1.3 var(--font-body);
+  text-align: center;
+  color: var(--wa-action);
+  cursor: pointer;
+  transition: background-color 0.15s, opacity 0.15s;
+}
+.wa-btn .icon { width: 16px; height: 16px; stroke-width: 2.25; }
+.wa-btn:hover { background: color-mix(in srgb, var(--wa-in) 90%, var(--wa-action)); }
+.wa-btn[aria-disabled="true"] { cursor: default; opacity: 0.55; }
+.wa-btn[aria-disabled="true"]:hover { background: var(--wa-in); }
+.wa-btn.is-chosen,
+.wa-btn.is-chosen:hover { background: var(--wa-out); color: var(--wa-text); opacity: 1; }
+
+.wa-typing .wa-bubble { display: flex; gap: 4px; padding: 13px 14px; }
+.wa-typing i { display: block; width: 7px; height: 7px; border-radius: 50%; background: var(--wa-dots); }
+
+/* Decorative: shows the message bar, and a hint when the chat is waiting for a tap */
+.wa-compose { display: flex; align-items: center; gap: 8px; padding: 6px 10px 14px; pointer-events: none; user-select: none; }
+.wa-input {
+  flex: 1;
+  min-width: 0;
+  padding: 11px 16px;
+  border-radius: 999px;
+  background: var(--wa-input);
+  color: var(--wa-input-text);
+}
+.wa-compose.is-waiting .wa-input { color: var(--wa-action); font-weight: 600; }
+.wa-mic {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--wa-header);
+  color: var(--wa-header-text);
+}
+.wa-mic .icon { width: 20px; height: 20px; }
+
+.wa-controls { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.wa-controls .pill[aria-disabled="true"] { opacity: 0.5; cursor: default; translate: none; }
+.wa-note { max-width: 24em; text-align: center; font-size: 0.9rem; color: var(--muted); }
+
 /* ---------- Call to action band (accent in both themes) ---------- */
 .cta {
   --focus: var(--on-accent);
@@ -933,7 +1132,16 @@ html.dialog-open { overflow: hidden; }
   from { box-shadow: 0 0 0 0 color-mix(in srgb, var(--phone-accent) 55%, transparent); }
   to   { box-shadow: 0 0 0 10px transparent; }
 }
+@keyframes wa-pop { from { opacity: 0; transform: translateY(8px) scale(0.97); } }
+@keyframes wa-dot {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
 @media (prefers-reduced-motion: no-preference) {
+  .wa-msg { animation: wa-pop 0.28s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  .wa-typing i { animation: wa-dot 1.1s ease-in-out infinite; }
+  .wa-typing i:nth-child(2) { animation-delay: 0.15s; }
+  .wa-typing i:nth-child(3) { animation-delay: 0.3s; }
   /* On-load entrance. "both" means the end state is the normal state: if animations never run, nothing stays hidden. */
   .hero-copy > *, .hero-visual { animation: rise-in 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
   .hero-copy > :nth-child(2) { animation-delay: 70ms; }
@@ -971,6 +1179,7 @@ html.dialog-open { overflow: hidden; }
   .hero-grid { grid-template-columns: minmax(0, 1fr); }
   .hero-visual { max-width: 720px; }
   .platform-grid { grid-template-columns: minmax(0, 1fr); }
+  .wa-grid { grid-template-columns: minmax(0, 1fr); gap: 56px; }
   .facts-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
@@ -1009,6 +1218,9 @@ html.dialog-open { overflow: hidden; }
 
 @media (max-width: 700px) {
   .module-grid { grid-template-columns: minmax(0, 1fr); }
+  /* Only the selected example keeps its description, so the three cards stay short */
+  .wa-tab[aria-selected="false"] .wa-tab-desc { display: none; }
+  .wa-tab[aria-selected="false"] .wa-tab-icon { grid-row: auto; }
 }
 
 @media (max-width: 640px) {
@@ -1047,6 +1259,8 @@ html.dialog-open { overflow: hidden; }
 }
 
 @media (max-width: 480px) {
+  .wa-screen { height: 560px; }
+  .wa-tab { padding: 16px 18px; gap: 2px 14px; }
   .cta-row .pill, .cta-actions .pill { width: 100%; }
   .cta-row, .cta-actions { flex-direction: column; }
   .cta-actions .pill { white-space: normal; text-align: center; line-height: 1.25; padding-block: 12px; }
