@@ -72,6 +72,15 @@
     <symbol id="i-briefcase" viewBox="0 0 24 24"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></symbol>
     <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></symbol>
     <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01Z"/></symbol>
+    <symbol id="i-checks" viewBox="0 0 24 24"><path d="M18 6 7 17l-5-5"/><path d="m22 10-7.5 7.5L13 16"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v3"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><rect x="14" y="4" width="4" height="16" rx="1"/><rect x="6" y="4" width="4" height="16" rx="1"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M6 3 20 12 6 21Z"/></symbol>
+    <symbol id="i-replay" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
   </defs>
 </svg>
 
@@ -520,6 +529,67 @@
     </div>
   </section>
 
+  <section class="section section-alt" id="whatsapp" aria-labelledby="wa-title">
+    <div class="wrap wa-grid">
+      <div class="wa-copy reveal">
+        <p class="eyebrow">Customer messaging</p>
+        <h2 id="wa-title">Updates, feedback and reminders, right in WhatsApp.</h2>
+        <p class="section-sub">Customers get a message when their job moves, a one-tap way to rate the service, and a nudge when the next visit is due. No app to install.</p>
+
+        <div class="wa-tabs" role="tablist" aria-label="WhatsApp message examples" aria-orientation="vertical">
+          <button class="wa-tab" type="button" role="tab" id="wa-tab-status" aria-controls="waScreen" aria-selected="true" aria-labelledby="wa-tab-status-title" aria-describedby="wa-tab-status-desc" data-scenario="status">
+            <span class="wa-tab-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-clipboard"/></svg></span>
+            <span class="wa-tab-title" id="wa-tab-status-title">Job status</span>
+            <span class="wa-tab-desc" id="wa-tab-status-desc">Every time the job card moves, the customer gets a message with a live tracking link.</span>
+          </button>
+          <button class="wa-tab" type="button" role="tab" id="wa-tab-feedback" aria-controls="waScreen" aria-selected="false" tabindex="-1" aria-labelledby="wa-tab-feedback-title" aria-describedby="wa-tab-feedback-desc" data-scenario="feedback">
+            <span class="wa-tab-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-star"/></svg></span>
+            <span class="wa-tab-title" id="wa-tab-feedback-title">Feedback</span>
+            <span class="wa-tab-desc" id="wa-tab-feedback-desc">Ask how it went the moment the car is delivered. Customers answer with one tap.</span>
+          </button>
+          <button class="wa-tab" type="button" role="tab" id="wa-tab-reminders" aria-controls="waScreen" aria-selected="false" tabindex="-1" aria-labelledby="wa-tab-reminders-title" aria-describedby="wa-tab-reminders-desc" data-scenario="reminders">
+            <span class="wa-tab-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-bell"/></svg></span>
+            <span class="wa-tab-title" id="wa-tab-reminders-title">Reminders</span>
+            <span class="wa-tab-desc" id="wa-tab-reminders-desc">Service-due reminders with Book, Remind me later and Not now buttons, so a reminder becomes a booking.</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="wa-stage reveal">
+        <div class="phone wa-phone">
+          <div class="wa-screen" id="waScreen" role="tabpanel" aria-labelledby="wa-tab-status">
+            <div class="wa-header">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-back"/></svg>
+              <span class="wa-avatar" aria-hidden="true">S</span>
+              <div class="wa-who">
+                <p class="wa-name">Sample Auto Care</p>
+                <p class="wa-sub">Business account</p>
+              </div>
+            </div>
+            <!-- tabindex="0" so keyboard users can scroll the conversation. The script fills it in;
+                 the noscript copy mirrors the first messages of the "Job status" example. -->
+            <div class="wa-body" id="waLog" role="log" aria-label="Sample WhatsApp conversation" tabindex="0">
+              <noscript>
+                <p class="wa-day">Today</p>
+                <div class="wa-msg wa-in"><div class="wa-bubble"><p class="wa-text">Hi Fathima 👋 We have received your <strong>Hyundai Creta</strong> (KL-01 AB 9087). Your job card is <strong>JC-1041</strong>.</p><p class="wa-meta">09:05</p></div></div>
+                <div class="wa-msg wa-in"><div class="wa-bubble"><p class="wa-text">✅ <strong>Ready for delivery.</strong> Your Creta is clean and waiting for you.</p><p class="wa-meta">14:15</p></div></div>
+              </noscript>
+            </div>
+            <div class="wa-compose" id="waCompose" aria-hidden="true">
+              <span class="wa-input" id="waHint">Message</span>
+              <span class="wa-mic"><svg class="icon" focusable="false"><use href="#i-mic"/></svg></span>
+            </div>
+          </div>
+        </div>
+        <div class="wa-controls">
+          <button class="pill pill-outline pill-sm" type="button" id="waPause"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-pause"/></svg><span>Pause</span></button>
+          <button class="pill pill-outline pill-sm" type="button" id="waReplay"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-replay"/></svg>Replay</button>
+        </div>
+        <p class="wa-note">Sample conversation. Tap the reply buttons in the chat to try it.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="cta" id="contact" aria-labelledby="cta-title">
     <div class="wrap">
       <h2 id="cta-title">See Qelvix run your workflow.</h2>
@@ -680,6 +750,23 @@
     root.classList.add('reveal-ready');
   }
 
+  // ---- Tab lists -----------------------------------------------------------------------------
+  // Click, or the arrow keys, Home and End. Used by the hero sample app and the WhatsApp examples.
+  function wireTabs(tabs, select) {
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => select(tab, false));
+      tab.addEventListener('keydown', (e) => {
+        const last = tabs.length - 1;
+        const prev = i === 0 ? last : i - 1;
+        const next = i === last ? 0 : i + 1;
+        const target = { ArrowUp: prev, ArrowLeft: prev, ArrowDown: next, ArrowRight: next, Home: 0, End: last }[e.key];
+        if (target === undefined) return;
+        e.preventDefault();
+        select(tabs[target], true);
+      });
+    });
+  }
+
   // ---- Hero sample app -----------------------------------------------------------------------
   // The dashboard mock is a vertical tab list: click a screen icon, or use the arrow keys, Home and End.
   const dashTabs = [...document.querySelectorAll('.dash-tab')];
@@ -695,18 +782,231 @@
     dashUrl.textContent = tab.dataset.url;
     if (moveFocus) tab.focus();
   }
-  dashTabs.forEach((tab, i) => {
-    tab.addEventListener('click', () => selectDashTab(tab, false));
-    tab.addEventListener('keydown', (e) => {
-      const last = dashTabs.length - 1;
-      const prev = i === 0 ? last : i - 1;
-      const next = i === last ? 0 : i + 1;
-      const target = { ArrowUp: prev, ArrowLeft: prev, ArrowDown: next, ArrowRight: next, Home: 0, End: last }[e.key];
-      if (target === undefined) return;
-      e.preventDefault();
-      selectDashTab(dashTabs[target], true);
+  wireTabs(dashTabs, selectDashTab);
+
+  // ---- WhatsApp simulation -------------------------------------------------------------------
+  // A scripted chat with sample data. A scenario is a list of messages from the business. A message
+  // with `buttons` waits for a tap, then plays the tapped button's `then` messages (which can carry
+  // buttons of their own). A `link` is a button that goes to a page instead of replying.
+  const WA_BUSINESS = 'Sample Auto Care';
+  const WA_SLOTS = ['Tomorrow, 10:00 AM', 'Saturday, 11:30 AM', 'Monday, 9:00 AM'];
+  const waImprove = (label) => ({ label, then: [{ time: '16:04', text: 'Noted, thank you. Our manager will read this on JC-1041.' }] });
+
+  const WA_SCENARIOS = {
+    status: {
+      day: 'Today',
+      steps: [
+        { time: '09:05', text: 'Hi Fathima 👋 We have received your *Hyundai Creta* (KL-01 AB 9087). Your job card is *JC-1041*.',
+          link: { label: 'Track live status', href: '#platform' } },
+        { time: '10:20', text: '🔧 *Work in progress.* S. Rao has started on your Creta in Bay 2.' },
+        { time: '13:40', text: '🔍 *Quality check.* The work is done and our supervisor is checking it.' },
+        { time: '14:15', text: '✅ *Ready for delivery.* Your Creta is clean and waiting for you.' }
+      ]
+    },
+    feedback: {
+      day: 'Today',
+      steps: [
+        { time: '16:02', text: `Thanks for choosing ${WA_BUSINESS}, Fathima! 🙏 How was the service on your Creta (JC-1041)?`,
+          buttons: [
+            { label: '😍 Loved it', then: [{ time: '16:03', text: 'That makes our day! Thank you, Fathima. We will see you at the next service. ⭐' }] },
+            { label: '🙂 It was okay', then: [{ time: '16:03', text: 'Thanks for being honest. What should we do better?',
+              buttons: [waImprove('Waiting time'), waImprove('Price'), waImprove('Communication')] }] },
+            { label: '😕 Not happy', then: [{ time: '16:03', text: 'We are sorry about that. 🙏 Our service manager will call you within the hour.' }] }
+          ] }
+      ]
+    },
+    reminders: {
+      day: 'Monday',
+      steps: [
+        { time: '10:00', text: '⏰ *Service reminder*\nHi Fathima, it has been 90 days since your Creta (KL-01 AB 9087) was last serviced. Shall we book the next one?',
+          buttons: [
+            { label: 'Book a slot', then: [{ time: '10:01', text: 'Great! Which time suits you?',
+              buttons: WA_SLOTS.map(slot => ({ label: slot, then: [{ time: '10:01', text: `✅ *Booked.* ${slot} at ${WA_BUSINESS}. We will remind you the evening before.` }] })) }] },
+            { label: 'Remind me later', then: [{ time: '10:01', text: 'No problem. We will remind you again in 3 days.' }] },
+            { label: 'Not now', then: [{ time: '10:01', text: 'Understood. We will check in again next month.' }] }
+          ] }
+      ]
+    }
+  };
+
+  const waScreen = document.getElementById('waScreen');
+  const waLog = document.getElementById('waLog');
+  const waCompose = document.getElementById('waCompose');
+  const waHint = document.getElementById('waHint');
+  const waPauseBtn = document.getElementById('waPause');
+  const waReplayBtn = document.getElementById('waReplay');
+  const waTabs = [...document.querySelectorAll('.wa-tab')];
+  const waReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  let waQueue = [];                 // messages still to come
+  let waTimer = null;               // the pending "typing" delay
+  let waTyping = null;              // the typing-dots element while it is on screen
+  let waWaiting = false;            // a message with buttons is on screen, waiting for a tap
+  let waUserPaused = false;
+  // The chat only plays while it is on screen (nothing happens behind the visitor's back).
+  let waInView = !('IntersectionObserver' in window);
+
+  function waEl(tag, className, text) {
+    const el = document.createElement(tag);
+    if (className) el.className = className;
+    if (text) el.textContent = text;
+    return el;
+  }
+  function waIcon(id) {
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+    svg.setAttribute('class', 'icon');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('focusable', 'false');
+    use.setAttribute('href', '#' + id);
+    svg.append(use);
+    return svg;
+  }
+  function waScrollDown() {
+    waLog.scrollTo({ top: waLog.scrollHeight, behavior: waReducedMotion.matches ? 'auto' : 'smooth' });
+  }
+
+  function waAddMessage(step, isOut) {
+    const msg = waEl('div', 'wa-msg ' + (isOut ? 'wa-out' : 'wa-in'));
+    const bubble = waEl('div', 'wa-bubble');
+    const text = waEl('p', 'wa-text');
+    const meta = waEl('p', 'wa-meta');
+    // Who is speaking is only shown by the side of the bubble, so say it for screen readers.
+    text.append(waEl('span', 'visually-hidden', (isOut ? 'You' : WA_BUSINESS) + ': '));
+    // WhatsApp-style *bold*: every second piece of the text is bold.
+    step.text.split('*').forEach((part, i) => {
+      if (part) text.append(i % 2 ? waEl('strong', '', part) : part);
     });
+    meta.append(waEl('time', '', step.time));
+    if (isOut) meta.append(waIcon('i-checks'));
+    bubble.append(text, meta);
+    msg.append(bubble);
+
+    if (step.link || step.buttons) {
+      const actions = waEl('ul', 'wa-actions');
+      if (step.link) {
+        const item = waEl('li');
+        const link = waEl('a', 'wa-btn');
+        link.href = step.link.href;
+        link.append(waIcon('i-external'), step.link.label);
+        item.append(link);
+        actions.append(item);
+      }
+      (step.buttons || []).forEach(option => {
+        const item = waEl('li');
+        const button = waEl('button', 'wa-btn', option.label);
+        button.type = 'button';
+        button.addEventListener('click', () => waChoose(step, option, actions, button));
+        item.append(button);
+        actions.append(item);
+      });
+      msg.classList.add('has-actions');
+      msg.append(actions);
+    }
+    waLog.append(msg);
+    waScrollDown();
+  }
+
+  // A tapped button is answered once. The others stay focusable (aria-disabled, not disabled) so
+  // keyboard focus is not thrown away.
+  function waChoose(step, option, actions, button) {
+    if (actions.classList.contains('is-answered')) return;
+    actions.classList.add('is-answered');
+    actions.querySelectorAll('.wa-btn').forEach(b => b.setAttribute('aria-disabled', 'true'));
+    button.classList.add('is-chosen');
+    waWaiting = false;
+    waUserPaused = false;
+    waAddMessage({ text: option.label, time: step.time }, true);
+    waQueue = option.then.concat(waQueue);
+    waPump();
+  }
+
+  function waShowTyping() {
+    if (waTyping) return;
+    const bubble = waEl('div', 'wa-bubble');
+    bubble.append(waEl('i'), waEl('i'), waEl('i'));
+    waTyping = waEl('div', 'wa-msg wa-in wa-typing');
+    waTyping.setAttribute('aria-hidden', 'true');
+    waTyping.append(bubble);
+    waLog.append(waTyping);
+    waScrollDown();
+  }
+  function waHalt() {
+    clearTimeout(waTimer);
+    waTimer = null;
+    if (waTyping) { waTyping.remove(); waTyping = null; }
+  }
+
+  // Keeps the Pause button and the message-bar hint in step with what the chat is doing.
+  function waSync() {
+    const nothingToPause = waWaiting || !waQueue.length;
+    waPauseBtn.setAttribute('aria-disabled', String(nothingToPause && !waUserPaused));
+    waPauseBtn.querySelector('span').textContent = waUserPaused ? 'Resume' : 'Pause';
+    waPauseBtn.querySelector('use').setAttribute('href', waUserPaused ? '#i-play' : '#i-pause');
+    waCompose.classList.toggle('is-waiting', waWaiting);
+    waHint.textContent = waWaiting ? 'Tap a button to reply' : 'Message';
+  }
+
+  // Plays the next message after a short "typing" delay, then carries on until the chat has to
+  // wait for a tap, is paused, or leaves the screen.
+  function waPump() {
+    waSync();
+    if (waTimer !== null || waWaiting || waUserPaused || !waInView || !waQueue.length) return;
+    const step = waQueue[0];
+    const delay = waReducedMotion.matches ? 0 : 700 + Math.min(step.text.length * 12, 900);
+    if (delay) waShowTyping();
+    waTimer = setTimeout(() => {
+      waTimer = null;
+      waHalt();
+      waQueue.shift();
+      waAddMessage(step, false);
+      waWaiting = Boolean(step.buttons);
+      waPump();
+    }, delay);
+  }
+
+  function waStart(name) {
+    waHalt();
+    waWaiting = false;
+    waUserPaused = false;
+    waLog.replaceChildren(waEl('p', 'wa-day', WA_SCENARIOS[name].day));
+    waLog.scrollTop = 0;
+    waQueue = WA_SCENARIOS[name].steps.slice();
+    waPump();
+  }
+
+  function selectWaTab(tab, moveFocus) {
+    if (tab.getAttribute('aria-selected') !== 'true') {
+      waTabs.forEach(t => {
+        const isOn = t === tab;
+        t.setAttribute('aria-selected', String(isOn));
+        t.tabIndex = isOn ? 0 : -1;
+      });
+      waScreen.setAttribute('aria-labelledby', tab.id);
+      waStart(tab.dataset.scenario);
+    }
+    if (moveFocus) tab.focus();
+  }
+  wireTabs(waTabs, selectWaTab);
+
+  waPauseBtn.addEventListener('click', () => {
+    if (waPauseBtn.getAttribute('aria-disabled') === 'true') return;
+    waUserPaused = !waUserPaused;
+    if (waUserPaused) waHalt();
+    waPump();
   });
+  waReplayBtn.addEventListener('click', () => {
+    waStart(waTabs.find(t => t.getAttribute('aria-selected') === 'true').dataset.scenario);
+  });
+
+  if ('IntersectionObserver' in window) {
+    // Plays while at least a third of the phone is on screen, and holds still otherwise.
+    new IntersectionObserver((entries) => {
+      waInView = entries[entries.length - 1].isIntersecting;
+      if (waInView) waPump(); else waHalt();
+    }, { threshold: 0.3 }).observe(waScreen);
+  }
+  waStart('status');
 
   // ---- Mobile menu ---------------------------------------------------------------------------
   const navToggle = document.getElementById('navToggle');
