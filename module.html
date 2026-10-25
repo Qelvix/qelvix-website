@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Qelvix ERP — Module</title>
+<meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -180,10 +181,12 @@
   });
 
   const params = new URLSearchParams(window.location.search);
-  const modId = params.get('id') || 'jobcards';
+  // The real pages (modules/<id>.html, built by scripts/build-module-pages.mjs) name their module in data-module and
+  // already carry their own title. This file is only the template and the old module.html?id=... address.
+  const modId = document.body.dataset.module || params.get('id') || 'jobcards';
   const mod = MODULES[modId] || MODULES.jobcards;
 
-  document.title = `${mod.name} — Qelvix ERP`;
+  if (!document.body.dataset.module) document.title = `${mod.name} — Qelvix ERP`;
   document.getElementById('modName').textContent = mod.name;
   document.getElementById('modTagline').textContent = mod.tagline;
   const modIcon = document.getElementById('modIcon');
@@ -202,6 +205,7 @@
     });
   }
 
+  sidebar.replaceChildren(); // the built pages ship the buttons pre-rendered for search engines; rebuild them with handlers
   mod.features.forEach((feature, i) => {
     const btn = document.createElement('button');
     btn.type = 'button';

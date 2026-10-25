@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-IN">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Qelvix ERP — Your whole workshop, one platform</title>
-<meta name="description" content="Qelvix ERP connects job cards, customers, invoicing, inventory, payroll and accounting in one platform. Switch on what you need today and add the rest as you grow.">
-<link rel="canonical" href="https://qelvix.in/">
+<title>Qelvix ERP — Garage, Workshop &amp; Business Management Software</title>
+<meta name="description" content="Qelvix ERP runs your garage or workshop: job cards, live vehicle tracking, invoicing, inventory, payroll and accounting in one connected platform.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<!-- The host is www.qelvix.in: qelvix.in redirects to it (Vercel domain setting). The canonical, og:url, sitemap
+     and structured data must all name the same host, or search engines are sent in circles. -->
+<link rel="canonical" href="https://www.qelvix.in/">
 
 <!-- Browser UI colour. Keep in sync with --bg in styles.css (light and dark). The script at the
      bottom of the page updates these if the visitor overrides their OS theme with the toggle. -->
@@ -14,15 +17,59 @@
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Qelvix ERP">
-<meta property="og:url" content="https://qelvix.in/">
+<meta property="og:locale" content="en_IN">
+<meta property="og:url" content="https://www.qelvix.in/">
 <meta property="og:title" content="Qelvix ERP — Your whole workshop, one platform">
 <meta property="og:description" content="Job cards, customers, invoicing, inventory, payroll and accounting, all connected. Switch on what you need today and add the rest as you grow.">
-<!-- PLACEHOLDER: this image does not exist yet. Add a 1200x630 PNG at this path (or change the URL). -->
-<meta property="og:image" content="https://qelvix.in/branding/og-image.png">
+<!-- Source: scripts/seo/og-image.html (regenerate steps are in its header comment). -->
+<meta property="og:image" content="https://www.qelvix.in/branding/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Qelvix ERP: your whole workshop, one platform.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Qelvix ERP — Your whole workshop, one platform">
 <meta name="twitter:description" content="Job cards, customers, invoicing, inventory, payroll and accounting, all connected. Switch on what you need today and add the rest as you grow.">
-<meta name="twitter:image" content="https://qelvix.in/branding/og-image.png">
+<meta name="twitter:image" content="https://www.qelvix.in/branding/og-image.png">
+<meta name="twitter:image:alt" content="Qelvix ERP: your whole workshop, one platform.">
+
+<!-- Structured data. Only facts that are on the page: no price or rating is claimed, so none is marked up. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.qelvix.in/#organization",
+      "name": "Qelvix",
+      "url": "https://www.qelvix.in/",
+      "logo": "https://www.qelvix.in/branding/mark-light.png",
+      "contactPoint": [
+        { "@type": "ContactPoint", "contactType": "sales", "telephone": "+91-99479-19201", "areaServed": "IN", "availableLanguage": ["en"] },
+        { "@type": "ContactPoint", "contactType": "sales", "telephone": "+91-97447-35749", "areaServed": "IN", "availableLanguage": ["en"] }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.qelvix.in/#website",
+      "url": "https://www.qelvix.in/",
+      "name": "Qelvix ERP",
+      "inLanguage": "en-IN",
+      "publisher": { "@id": "https://www.qelvix.in/#organization" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://www.qelvix.in/#software",
+      "name": "Qelvix ERP",
+      "url": "https://www.qelvix.in/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "ERP for garages, workshops and multi-branch businesses: job cards, live vehicle tracking, invoicing, inventory and warranties, payroll and HR, and accounting in one connected platform.",
+      "image": "https://www.qelvix.in/branding/og-image.png",
+      "publisher": { "@id": "https://www.qelvix.in/#organization" }
+    }
+  ]
+}
+</script>
 
 <!-- Sets the theme before first paint so there is no flash of the wrong theme.
      Saved choice first, then the OS setting. Storage can be blocked (private mode, some in-app
@@ -41,7 +88,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Sora:wght@600&display=swap" rel="stylesheet">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="/branding/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/branding/icon-192.png">
+<link rel="apple-touch-icon" href="/branding/apple-touch-icon.png">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="home.css">
 </head>
@@ -86,7 +136,7 @@
 
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="logo" href="index.html">
+    <a class="logo" href="/">
       <img class="logo-mark logo-mark-light" src="branding/mark-light.png" width="36" height="36" alt="">
       <img class="logo-mark logo-mark-dark" src="branding/mark-dark.png" width="36" height="36" alt="">
       <span class="logo-word">Qelvix</span>
@@ -358,7 +408,7 @@
 
       <div class="module-grid reveal-group">
 
-        <a class="module-card" href="module.html?id=jobcards" aria-labelledby="mod-jobcards" style="--i:0">
+        <a class="module-card" href="/modules/jobcards" aria-labelledby="mod-jobcards" style="--i:0">
           <div class="module-top">
             <span class="module-num" aria-hidden="true">01</span>
             <span class="module-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-clipboard"/></svg></span>
@@ -374,7 +424,7 @@
           <span class="module-link">See it in action <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
         </a>
 
-        <a class="module-card" href="module.html?id=tracking" aria-labelledby="mod-tracking" style="--i:1">
+        <a class="module-card" href="/modules/tracking" aria-labelledby="mod-tracking" style="--i:1">
           <div class="module-top">
             <span class="module-num" aria-hidden="true">02</span>
             <span class="module-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-pin"/></svg></span>
@@ -390,7 +440,7 @@
           <span class="module-link">See it in action <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
         </a>
 
-        <a class="module-card" href="module.html?id=invoices" aria-labelledby="mod-invoices" style="--i:2">
+        <a class="module-card" href="/modules/invoices" aria-labelledby="mod-invoices" style="--i:2">
           <div class="module-top">
             <span class="module-num" aria-hidden="true">03</span>
             <span class="module-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-receipt"/></svg></span>
@@ -406,7 +456,7 @@
           <span class="module-link">See it in action <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
         </a>
 
-        <a class="module-card" href="module.html?id=inventory" aria-labelledby="mod-inventory" style="--i:3">
+        <a class="module-card" href="/modules/inventory" aria-labelledby="mod-inventory" style="--i:3">
           <div class="module-top">
             <span class="module-num" aria-hidden="true">04</span>
             <span class="module-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-package"/></svg></span>
@@ -422,7 +472,7 @@
           <span class="module-link">See it in action <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
         </a>
 
-        <a class="module-card" href="module.html?id=payroll" aria-labelledby="mod-payroll" style="--i:4">
+        <a class="module-card" href="/modules/payroll" aria-labelledby="mod-payroll" style="--i:4">
           <div class="module-top">
             <span class="module-num" aria-hidden="true">05</span>
             <span class="module-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-users"/></svg></span>
@@ -438,7 +488,7 @@
           <span class="module-link">See it in action <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
         </a>
 
-        <a class="module-card" href="module.html?id=accounting" aria-labelledby="mod-accounting" style="--i:5">
+        <a class="module-card" href="/modules/accounting" aria-labelledby="mod-accounting" style="--i:5">
           <div class="module-top">
             <span class="module-num" aria-hidden="true">06</span>
             <span class="module-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-landmark"/></svg></span>
@@ -459,15 +509,15 @@
       <div class="also reveal">
         <h3 class="also-title">Also included</h3>
         <ul class="chip-list">
-          <li><a class="chip" href="module.html?id=customers">Customers and vehicles</a></li>
-          <li><a class="chip" href="module.html?id=pipeline">Enquiries, bookings and estimates</a></li>
-          <li><a class="chip" href="module.html?id=purchasing">Purchasing and vendors</a></li>
-          <li><a class="chip" href="module.html?id=employeeportal">Employee self-service</a></li>
-          <li><a class="chip" href="module.html?id=assets">Asset management</a></li>
-          <li><a class="chip" href="module.html?id=marketing">Marketing and offers</a></li>
-          <li><a class="chip" href="module.html?id=delivery">Delivery</a></li>
-          <li><a class="chip" href="module.html?id=reports">Reports and BI</a></li>
-          <li><a class="chip" href="module.html?id=security">Security and multi-tenancy</a></li>
+          <li><a class="chip" href="/modules/customers">Customers and vehicles</a></li>
+          <li><a class="chip" href="/modules/pipeline">Enquiries, bookings and estimates</a></li>
+          <li><a class="chip" href="/modules/purchasing">Purchasing and vendors</a></li>
+          <li><a class="chip" href="/modules/employeeportal">Employee self-service</a></li>
+          <li><a class="chip" href="/modules/assets">Asset management</a></li>
+          <li><a class="chip" href="/modules/marketing">Marketing and offers</a></li>
+          <li><a class="chip" href="/modules/delivery">Delivery</a></li>
+          <li><a class="chip" href="/modules/reports">Reports and BI</a></li>
+          <li><a class="chip" href="/modules/security">Security and multi-tenancy</a></li>
         </ul>
       </div>
     </div>
@@ -611,7 +661,7 @@
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-inner">
-      <a class="logo" href="index.html">
+      <a class="logo" href="/">
         <img class="logo-mark logo-mark-light" src="branding/mark-light.png" width="36" height="36" alt="">
         <img class="logo-mark logo-mark-dark" src="branding/mark-dark.png" width="36" height="36" alt="">
         <span class="logo-word">Qelvix</span>

@@ -841,6 +841,21 @@ footer {
 }
 .back-link:hover { color: var(--text-primary); }
 .back-link .material-symbols-outlined { font-size: 16px; }
+/* "Other Qelvix modules" links at the bottom of each built module page (scripts/build-module-pages.mjs) */
+.related-modules { padding: 56px 0 8px; }
+.related-modules h2 { font-size: 18px; margin-bottom: 16px; color: var(--text-primary); }
+.related-list { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; }
+.related-list a {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-decoration: none;
+}
+.related-list a:hover { border-color: var(--accent-text); color: var(--text-primary); }
 .module-hero-head {
   display: flex;
   align-items: center;
