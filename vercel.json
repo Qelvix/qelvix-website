@@ -1,0 +1,23 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/module.html",
+      "has": [{ "type": "query", "key": "id", "value": "platform" }],
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/module.html",
+      "has": [{ "type": "query", "key": "id", "value": "(?<id>[a-z]+)" }],
+      "destination": "/modules/:id",
+      "permanent": true
+    },
+    {
+      "source": "/module.html",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
+}
