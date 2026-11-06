@@ -546,6 +546,23 @@ html.dialog-open { overflow: hidden; }
   .dash-job { column-gap: 8px; }
   .status { padding: 6px 9px; }
   .dash-title { font-size: 15px; }
+
+  /* A phone gets a compact preview, not a screen's worth of scrolling: the dashboard was ~800px tall here.
+     Slim tiles (label and number side by side), three job cards, no bay card (the bays are still in the desktop and
+     tablet mock), and the tallest screen (the worksheet) is cut off with a fade at the height of the others. */
+  .dash-kpis,
+  .dash-kpis-3 { gap: 8px; }
+  .dash-kpi { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 12px; }
+  .dash-kpi-label { font-size: 12px; }
+  .dash-kpi-value { font-size: 20px; }
+  #view-dashboard .dash-bays { display: none; }
+  #view-dashboard .dash-job:nth-child(n + 4) { display: none; }
+  #view-dashboard .dash-job:nth-child(3) { padding-bottom: 0; }
+  .dash-main { max-height: 420px; overflow: hidden; }
+  .dash-main:has(#view-worksheet.is-active) {
+    -webkit-mask-image: linear-gradient(#000 calc(100% - 48px), transparent);
+    mask-image: linear-gradient(#000 calc(100% - 48px), transparent);
+  }
 }
 
 /* Floating white card, overlapping the bottom-left of the dashboard */
@@ -1278,3 +1295,6 @@ html.dialog-open { overflow: hidden; }
 /* A card that is not a link must not lift on hover like one. */
 .module-card-static:hover { translate: none; border-color: var(--border); box-shadow: var(--shadow-card); }
 .module-card-static .module-points { margin-bottom: 0; }
+@media (min-width: 1101px) {
+  .module-card-wide { grid-column: span 2; }
+}

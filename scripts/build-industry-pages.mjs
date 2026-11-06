@@ -8,6 +8,8 @@
 //
 // The header, footer, demo-request dialog, icon sprite and the page scripts are cut out of index.html at build time, so these
 // pages cannot drift from the home page. If index.html changes so that a marker below is gone, this script fails loudly.
+// It also rewrites the industry cards in the "Who it's for" section of index.html (between the industries:start / industries:end
+// markers), so the home page and the pages it links to cannot disagree.
 // Re-run after editing index.html or industries-data.mjs, then re-run build-module-pages.mjs (it owns sitemap.xml), and commit.
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
@@ -206,8 +208,49 @@ ${pageScript}
 `;
 }
 
+/** The cards of the "Who it's for" section on the home page, written between the industries:start / industries:end markers. */
+function homeCards() {
+  const arrow = '<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg>';
+  const cards = industries.map((ind, i) => `        <a class="module-card" href="/industries/${ind.slug}" aria-labelledby="ind-${ind.slug}" style="--i:${i}">
+          <div class="module-top">
+            <span class="module-num" aria-hidden="true">${String(i + 1).padStart(2, '0')}</span>
+            <span class="module-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-${ind.icon}"/></svg></span>
+          </div>
+          <h3 id="ind-${ind.slug}">${esc(ind.label)}</h3>
+          <p>${esc(ind.blurb)}</p>
+          <span class="module-link">See the ${esc(ind.short)} setup ${arrow}</span>
+        </a>`);
+  const n = industries.length;
+  // module-card-wide spans two columns on wide screens so the last row is full when the card count is not a multiple of three.
+  cards.push(`        <a class="module-card module-card-wide" href="#contact" aria-labelledby="ind-other" style="--i:${n}">
+          <div class="module-top">
+            <span class="module-num" aria-hidden="true">${String(n + 1).padStart(2, '0')}</span>
+            <span class="module-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chat"/></svg></span>
+          </div>
+          <h3 id="ind-other">Something else?</h3>
+          <p>Tell us what your business does. A general setup lets you switch on only the modules you need.</p>
+          <span class="module-link">Talk to us ${arrow}</span>
+        </a>`);
+  return cards.join('\n\n');
+}
+
+function updateHomePage() {
+  const raw = readFileSync(join(root, 'index.html'), 'utf8');
+  const crlf = raw.includes('\r\n');
+  const text = raw.replace(/\r\n/g, '\n');
+  const start = '        <!-- industries:start -->\n';
+  const end = '        <!-- industries:end -->';
+  const a = text.indexOf(start);
+  const b = text.indexOf(end);
+  if (a === -1 || b === -1 || b < a) throw new Error('index.html is missing the industries:start / industries:end markers');
+  let out = text.slice(0, a + start.length) + homeCards() + '\n' + text.slice(b);
+  if (crlf) out = out.replace(/\n/g, '\r\n');
+  if (out !== raw) writeFileSync(join(root, 'index.html'), out);
+}
+
 mkdirSync(join(root, 'industries'), { recursive: true });
 for (const ind of industries) {
   writeFileSync(join(root, 'industries', `${ind.slug}.html`), buildPage(ind));
 }
-console.log(`Wrote ${industries.length} industry pages.`);
+updateHomePage();
+console.log(`Wrote ${industries.length} industry pages and the industry cards on the home page.`);

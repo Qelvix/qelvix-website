@@ -9,6 +9,7 @@
 export const industries = [
   {
     slug: 'garage',
+    short: 'garage',
     label: 'Garages & workshops',
     icon: 'wrench',
     blurb: 'Job cards, live vehicle status for customers, parts and billing.',
@@ -37,11 +38,100 @@ export const industries = [
       { icon: 'package', title: 'Parts, stock and warranties', href: '/modules/inventory',
         text: "Know what's on the shelf, and back every part you sell with a printable warranty.",
         points: ['Parts catalog and stock adjustments', 'Low stock alerts', 'Printable warranties'] },
+      { icon: 'briefcase', title: 'Technicians and payroll', href: '/modules/payroll',
+        text: 'From hire to payslip, in one system.',
+        points: ['Employees, attendance and payroll runs', 'Employee self-service on a phone'] },
+    ],
+  },
+
+  {
+    slug: 'automotive',
+    short: 'automotive',
+    label: 'Automotive businesses',
+    icon: 'wrench',
+    blurb: 'A ready service catalogue for accessories, detailing and customisation, plus vehicle history.',
+    // Source: app code on origin/main. Business type AUTOMOTIVE_WORKSHOP (BusinessType.java). The service catalogue is the shared
+    // service_task_catalog table (V51; ten groups: Car Accessories, Electronics & Safety, Car Detailing & Protection, Vehicle
+    // Modification, Wheels & Tyres, Sunroof Services, Cleaning & Maintenance, Installation Services, Custom Packages, After Sales
+    // Services) and the front end uses it in bookings, estimates and invoices. AutomotiveCatalogSeeder gives a new automotive
+    // company starter brands and part categories for a car-accessory / auto-spares shop. ReminderType = PPF, WINDSHIELD, SERVICING,
+    // INSURANCE, OFFER, CUSTOM, triggered by days since the vehicle's last matching completed job card. Different emphasis from
+    // the garage page on purpose (catalogue, accessories, reminders), so the two pages are not near-copies.
+    title: 'Automotive Business Management Software — Qelvix ERP',
+    description: 'Qelvix ERP for automotive businesses: a ready service catalogue for accessories, detailing and customisation, job cards, vehicle history, parts, billing.',
+    eyebrow: 'Qelvix ERP for automotive businesses',
+    h1Lead: 'Run your automotive business',
+    h1Accent: 'from enquiry to delivery.',
+    lede: 'Car service, accessories, customisation and detailing in one system: a ready-made service catalogue, job cards, vehicle history, parts and billing.',
+    cardsTitle: 'What an automotive business runs on Qelvix',
+    cardsSub: 'Create the company with the Automotive Workshop business type and the vehicle, bay and job card screens are switched on.',
+    cards: [
+      { icon: 'checks', title: 'A ready-made service catalogue',
+        text: 'Ten groups of automotive work are already listed, ready to pick in bookings, estimates and invoices.',
+        points: ['Car accessories, electronics and safety', 'Detailing and protection', 'Vehicle modification, wheels and tyres, sunroof services', 'Cleaning, installation, custom packages and after-sales services'] },
+      { icon: 'package', title: 'Accessories and spares stock', href: '/modules/inventory',
+        text: 'A new automotive company starts with brands and part categories for a car accessory and auto spares shop.',
+        points: ['Parts catalog and stock adjustments', 'Low stock alerts', 'Printable warranties'] },
+      { icon: 'users', title: 'Customers and vehicles', href: '/modules/customers',
+        text: 'One record per customer and vehicle: ownership, history, and everything since the first visit.',
+        points: ['A customer list with phone and city', 'A vehicle list with last service and status'] },
+      { icon: 'clipboard', title: 'Job cards', href: '/modules/jobcards',
+        text: 'Every job from intake to delivery, with a status workflow and an audit trail.',
+        points: ['Technician and bay assignment', 'QC approval, customer sign-off and delivery handover', 'Closed jobs turn into invoices without re-entering line items'] },
+      { icon: 'bell', title: 'Reminders and offers', href: '/modules/marketing',
+        text: 'Bring vehicles back when the next job is due.',
+        points: ['Reminder rules for PPF, windshield, servicing, insurance and offers', "Sent a set number of days after the vehicle's last matching completed job card", 'Offers and promotions with a valid-till date'] },
+      { icon: 'calendar', title: 'Enquiries, bookings and estimates', href: '/modules/pipeline',
+        text: 'From first phone call to a scheduled slot to a quote, before anything is entered twice.',
+        points: ['Enquiry log with follow-ups', 'Bookings and bay availability', 'Estimates tracked as draft, sent or approved'] },
+    ],
+  },
+
+  {
+    slug: 'car-wash',
+    short: 'car wash',
+    label: 'Car wash & detailing',
+    icon: 'wrench',
+    blurb: 'Wash bays, a job card for every vehicle, live status for customers and billing.',
+    // Source: app code on origin/main. There is NO car wash business type: a car wash is created as AUTOMOTIVE_WORKSHOP, which
+    // switches on job cards, bays, bookings, estimates, reminders and tracking, and the page says so. Bay type WASH is shown as
+    // "Car Wash" (service-bay-dialog.component.ts, service-bay.model.ts). The service names below are rows of service_task_catalog
+    // (V51): Exterior Wash, Steam Wash, Foam Wash, Engine Bay Cleaning, Interior/Leather/Upholstery Cleaning, Wax Polish, Machine
+    // Polishing, Clay Bar Treatment, Headlight Restoration, Scratch Removal, Ceramic Coating, Graphene Coating, Paint Protection
+    // Film (PPF), Window Tint Film. Memberships and loyalty exist only on the Beauty Parlour type, so none is claimed here.
+    title: 'Car Wash & Detailing Business Software — Qelvix ERP',
+    description: 'Qelvix ERP for car wash and detailing businesses: wash bays, job cards, live status for customers, bookings, estimates, invoicing, reminders, payroll.',
+    eyebrow: 'Qelvix ERP for car wash and detailing businesses',
+    h1Lead: 'Run your car wash',
+    h1Accent: 'from drive-in to delivery.',
+    lede: 'Wash bays, a job card for every vehicle, live status your customers can check without calling, and billing, with attendance and payroll for your crew.',
+    cardsTitle: 'What a car wash or detailing business runs on Qelvix',
+    cardsSub: 'Create the company with the Automotive Workshop business type: it switches on the vehicle, bay and job card screens. There is no separate car wash type.',
+    cards: [
+      { icon: 'grid', title: 'Wash bays', href: '/modules/pipeline',
+        text: 'Give your wash bays their own type so you can see what is free.',
+        points: ['Service bays with a Car Wash type, next to general, specialty and paint bays', 'Bay availability and utilisation'] },
+      { icon: 'checks', title: 'Wash and detailing services', href: '/modules/jobcards',
+        text: 'A ready-made service list already covers wash, detailing and protection work.',
+        points: ['Exterior wash, steam wash, foam wash and engine bay cleaning', 'Interior, leather and upholstery cleaning, wax polish and machine polishing', 'Clay bar treatment, headlight restoration and scratch removal', 'Ceramic coating, graphene coating, PPF and window tint film'] },
+      { icon: 'clipboard', title: 'A job card for every vehicle', href: '/modules/jobcards',
+        text: 'Follow each vehicle from intake to delivery.',
+        points: ['A status workflow with an audit trail', 'Staff and bay assignment', 'QC approval, customer sign-off and delivery handover'] },
+      { icon: 'pin', title: 'Live status for customers', href: '/modules/tracking',
+        text: 'Customers check real-time status without a login, a call, or an account.',
+        points: ['Public, no-login QR/link tracking page', 'Real-time job status by vehicle registration or job number'] },
+      { icon: 'calendar', title: 'Bookings, estimates and billing', href: '/modules/pipeline',
+        text: 'Book a slot, quote the job, bill it.',
+        points: ['Bookings and bay availability', 'Estimates tracked as draft, sent or approved', 'Closed jobs turn into invoices'] },
+      { icon: 'bell', title: 'Reminders and offers', href: '/modules/marketing',
+        text: 'Bring customers back without a spreadsheet of phone numbers.',
+        points: ["Reminder rules sent a set number of days after a vehicle's last matching completed job card", 'Offers and promotions with a valid-till date'] },
     ],
   },
 
   {
     slug: 'doctor-clinic',
+    short: 'clinic',
     label: 'Doctor clinics',
     icon: 'medical',
     blurb: 'Patient records, doctor calendar, visit records and clinic billing.',
@@ -81,6 +171,7 @@ export const industries = [
 
   {
     slug: 'salon-beauty-parlour',
+    short: 'salon',
     label: 'Salons & beauty parlours',
     icon: 'scissors',
     blurb: 'Service menu, stylist calendar, commission, loyalty and billing.',
@@ -107,7 +198,7 @@ export const industries = [
         points: ['Bookings for each stylist', 'Weekly availability per stylist', 'A calendar grid to pick the stylist and the slot'] },
       { icon: 'receipt', title: 'Beauty POS',
         text: 'Fast counter billing for services and retail products.',
-        points: ['Add services and retail products in one place', 'Search clients by name or phone', 'Record the payment method'] },
+        points: ['Add services and retail products in one place', 'Search clients by name or phone', 'Record the payment method', 'Stock and purchasing from vendors for the products you sell'] },
       { icon: 'users', title: 'Client history',
         text: 'See what each client has had done, and by whom.',
         points: ['Service, stylist, date and notes', 'Products used in each service'] },
@@ -117,14 +208,12 @@ export const industries = [
       { icon: 'bell', title: 'Loyalty and memberships',
         text: 'Give regulars a reason to come back.',
         points: ['Loyalty tiers with a discount percentage', 'Membership: a client buys a package with a number of sessions', 'Sessions remaining tracked for every membership'] },
-      { icon: 'package', title: 'Retail product stock',
-        text: 'Track the products you sell at the counter.',
-        points: ['Stock and purchasing from vendors', 'Sell retail products from the Beauty POS'] },
     ],
   },
 
   {
     slug: 'retail-showroom',
+    short: 'retail',
     label: 'Retail & showrooms',
     icon: 'package',
     blurb: 'Stock, buying, billing, customers and offers for a shop or showroom.',
@@ -163,6 +252,7 @@ export const industries = [
 
   {
     slug: 'logistics',
+    short: 'logistics',
     label: 'Logistics companies',
     icon: 'truck',
     blurb: 'Staff, payroll, invoicing, purchasing and accounts for the office side.',
