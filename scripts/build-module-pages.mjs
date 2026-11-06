@@ -89,8 +89,7 @@ function buildPage(id, mod) {
   ].join('\n');
 
   const icons = [
-    '<link rel="icon" type="image/svg+xml" href="/favicon.svg">',
-    '<link rel="icon" type="image/png" sizes="48x48" href="/branding/favicon-48.png">',
+    '<link rel="icon" href="/favicon.ico" sizes="48x48">',
     '<link rel="icon" type="image/png" sizes="192x192" href="/branding/icon-192.png">',
     '<link rel="apple-touch-icon" href="/branding/apple-touch-icon.png">',
   ].join('\n');
@@ -108,7 +107,7 @@ function buildPage(id, mod) {
   html = swap(html, '<html lang="en">', '<html lang="en-IN">');
   html = swap(html, '<title>Qelvix ERP — Module</title>', head);
   html = swap(html, '<meta name="robots" content="noindex">\n', ''); // the template itself is noindex (legacy URL)
-  html = swap(html, '<link rel="icon" type="image/svg+xml" href="favicon.svg">', icons);
+  html = swap(html, '<link rel="icon" href="/favicon.ico">', icons);
   html = swap(html, '<link rel="stylesheet" href="styles.css">', '<link rel="stylesheet" href="/styles.css">');
   html = swap(html, '<body>', `<body data-module="${esc(id)}">`);
 
