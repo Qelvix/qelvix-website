@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Qelvix ERP — Garage, Workshop &amp; Business Management Software</title>
-<meta name="description" content="Qelvix ERP runs your garage or workshop: job cards, live vehicle tracking, invoicing, inventory, payroll and accounting in one connected platform.">
+<title>Qelvix ERP — Garage, Clinic, Salon &amp; Retail Management Software</title>
+<meta name="description" content="Qelvix ERP for garages, doctor clinics, salons, beauty parlours, retail showrooms and logistics firms: billing, customers, inventory, payroll, accounting.">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <!-- The host is www.qelvix.in: qelvix.in redirects to it (Vercel domain setting). The canonical, og:url, sitemap
      and structured data must all name the same host, or search engines are sent in circles. -->
@@ -19,16 +19,16 @@
 <meta property="og:site_name" content="Qelvix ERP">
 <meta property="og:locale" content="en_IN">
 <meta property="og:url" content="https://www.qelvix.in/">
-<meta property="og:title" content="Qelvix ERP — Your whole workshop, one platform">
-<meta property="og:description" content="Job cards, customers, invoicing, inventory, payroll and accounting, all connected. Switch on what you need today and add the rest as you grow.">
+<meta property="og:title" content="Qelvix ERP — One platform for garages, clinics, salons and retail">
+<meta property="og:description" content="Customers, billing, inventory, payroll and accounting, all connected. Switch on what you need today and add the rest as you grow.">
 <!-- Source: scripts/seo/og-image.html (regenerate steps are in its header comment). -->
 <meta property="og:image" content="https://www.qelvix.in/branding/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Qelvix ERP: your whole workshop, one platform.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Qelvix ERP — Your whole workshop, one platform">
-<meta name="twitter:description" content="Job cards, customers, invoicing, inventory, payroll and accounting, all connected. Switch on what you need today and add the rest as you grow.">
+<meta name="twitter:title" content="Qelvix ERP — One platform for garages, clinics, salons and retail">
+<meta name="twitter:description" content="Customers, billing, inventory, payroll and accounting, all connected. Switch on what you need today and add the rest as you grow.">
 <meta name="twitter:image" content="https://www.qelvix.in/branding/og-image.png">
 <meta name="twitter:image:alt" content="Qelvix ERP: your whole workshop, one platform.">
 
@@ -53,6 +53,7 @@
       "@id": "https://www.qelvix.in/#website",
       "url": "https://www.qelvix.in/",
       "name": "Qelvix ERP",
+      "alternateName": "Qelvix",
       "inLanguage": "en-IN",
       "publisher": { "@id": "https://www.qelvix.in/#organization" }
     },
@@ -63,7 +64,7 @@
       "url": "https://www.qelvix.in/",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web",
-      "description": "ERP for garages, workshops and multi-branch businesses: job cards, live vehicle tracking, invoicing, inventory and warranties, payroll and HR, and accounting in one connected platform.",
+      "description": "ERP for garages and workshops, doctor clinics, salons and beauty parlours, retail showrooms, logistics companies and multi-branch businesses: customers, invoicing, inventory, payroll and HR, and accounting in one connected platform.",
       "image": "https://www.qelvix.in/branding/og-image.png",
       "publisher": { "@id": "https://www.qelvix.in/#organization" }
     }
@@ -130,6 +131,9 @@
     <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v3"/></symbol>
     <symbol id="i-pause" viewBox="0 0 24 24"><rect x="14" y="4" width="4" height="16" rx="1"/><rect x="6" y="4" width="4" height="16" rx="1"/></symbol>
     <symbol id="i-play" viewBox="0 0 24 24"><path d="M6 3 20 12 6 21Z"/></symbol>
+    <symbol id="i-medical" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></symbol>
+    <symbol id="i-scissors" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.12 15.88M14.47 14.48 20 20M8.12 8.12 12 12"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
     <symbol id="i-replay" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></symbol>
   </defs>
 </svg>
@@ -143,6 +147,7 @@
     </a>
 
     <nav class="primary-nav" id="primaryNav" aria-label="Primary">
+      <a href="#industries">Industries</a>
       <a href="#modules">Modules</a>
       <a href="#platform">Platform</a>
       <a href="#contact">Contact</a>
@@ -169,8 +174,8 @@
     <div class="wrap hero-grid">
       <div class="hero-copy">
         <p class="eyebrow">Multi-business ERP</p>
-        <h1 id="hero-title">Your whole workshop, <span class="accent">one platform.</span></h1>
-        <p class="lede">Job cards, customers, invoicing, inventory, payroll and accounting, all connected. Switch on what you need today and add the rest as you grow.</p>
+        <h1 id="hero-title">Run your whole business, <span class="accent">one platform.</span></h1>
+        <p class="lede">For garages, doctor clinics, salons and beauty parlours, retail showrooms and logistics companies: customers, billing, inventory, payroll and accounting, all connected. Switch on what you need today and add the rest as you grow.</p>
         <div class="cta-row">
           <button class="pill pill-accent pill-lg js-open-demo" type="button">Request a demo</button>
           <a class="pill pill-outline pill-lg" href="#modules">Explore the modules</a>
@@ -395,6 +400,79 @@
         <li><span class="fact-value">Role-based</span><span class="fact-label">access enforced on the server</span></li>
         <li><span class="fact-value">Multi-company</span><span class="fact-label">one account, many branches</span></li>
       </ul>
+    </div>
+  </section>
+
+  <section class="section" id="industries" aria-labelledby="industries-title">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Who it's for</p>
+        <h2 id="industries-title">One platform, set up for your kind of business.</h2>
+        <p class="section-sub">Garages, doctor clinics, salons and beauty parlours, and retail shops each have a business type that switches on the screens that fit and hides the rest. Logistics companies use the back-office modules.</p>
+      </div>
+
+      <!-- Written by hand: keep the first five in step with scripts/industries-data.mjs (the pages they link to are built from it). -->
+      <div class="module-grid reveal-group">
+        <a class="module-card" href="/industries/garage" aria-labelledby="ind-garage" style="--i:0">
+          <div class="module-top">
+            <span class="module-num" aria-hidden="true">01</span>
+            <span class="module-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-wrench"/></svg></span>
+          </div>
+          <h3 id="ind-garage">Garages and workshops</h3>
+          <p>Job cards, live vehicle status for customers, parts and billing.</p>
+          <span class="module-link">See the garage setup <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+        </a>
+
+        <a class="module-card" href="/industries/doctor-clinic" aria-labelledby="ind-clinic" style="--i:1">
+          <div class="module-top">
+            <span class="module-num" aria-hidden="true">02</span>
+            <span class="module-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-medical"/></svg></span>
+          </div>
+          <h3 id="ind-clinic">Doctor clinics</h3>
+          <p>Patient records, doctor calendar, visit records and clinic billing.</p>
+          <span class="module-link">See the clinic setup <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+        </a>
+
+        <a class="module-card" href="/industries/salon-beauty-parlour" aria-labelledby="ind-salon" style="--i:2">
+          <div class="module-top">
+            <span class="module-num" aria-hidden="true">03</span>
+            <span class="module-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-scissors"/></svg></span>
+          </div>
+          <h3 id="ind-salon">Salons and beauty parlours</h3>
+          <p>Service menu, stylist calendar, commission, loyalty and billing.</p>
+          <span class="module-link">See the salon setup <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+        </a>
+
+        <a class="module-card" href="/industries/retail-showroom" aria-labelledby="ind-retail" style="--i:3">
+          <div class="module-top">
+            <span class="module-num" aria-hidden="true">04</span>
+            <span class="module-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-package"/></svg></span>
+          </div>
+          <h3 id="ind-retail">Retail and showrooms</h3>
+          <p>Stock, buying, billing, customers and offers for a shop or showroom.</p>
+          <span class="module-link">See the retail setup <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+        </a>
+
+        <a class="module-card" href="/industries/logistics" aria-labelledby="ind-logistics" style="--i:4">
+          <div class="module-top">
+            <span class="module-num" aria-hidden="true">05</span>
+            <span class="module-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-truck"/></svg></span>
+          </div>
+          <h3 id="ind-logistics">Logistics companies</h3>
+          <p>Staff, payroll, invoicing, purchasing and accounts for the office side.</p>
+          <span class="module-link">See the logistics setup <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+        </a>
+
+        <a class="module-card" href="#contact" aria-labelledby="ind-other" style="--i:5">
+          <div class="module-top">
+            <span class="module-num" aria-hidden="true">06</span>
+            <span class="module-icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-chat"/></svg></span>
+          </div>
+          <h3 id="ind-other">Something else?</h3>
+          <p>Tell us what your business does. A general setup lets you switch on only the modules you need.</p>
+          <span class="module-link">Talk to us <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -667,6 +745,7 @@
         <span class="logo-word">Qelvix</span>
       </a>
       <nav class="footer-nav" aria-label="Footer">
+        <a href="#industries">Industries</a>
         <a href="#modules">Modules</a>
         <a href="#platform">Platform</a>
         <a href="#contact">Contact</a>
@@ -699,6 +778,8 @@
           <select id="fType" name="type">
             <option value="" disabled selected>Select your business type</option>
             <option value="Auto service garage / workshop">Auto service garage / workshop</option>
+            <option value="Doctor clinic">Doctor clinic</option>
+            <option value="Salon / beauty parlour">Salon / beauty parlour</option>
             <option value="Jewellery">Jewellery</option>
             <option value="Retail / showroom">Retail / showroom</option>
             <option value="Distribution / wholesale">Distribution / wholesale</option>

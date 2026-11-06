@@ -1266,3 +1266,15 @@ html.dialog-open { overflow: hidden; }
   .cta-actions .pill { white-space: normal; text-align: center; line-height: 1.25; padding-block: 12px; }
   .dialog-actions { flex-direction: column; }
 }
+
+/* ---------- Industry landing pages (industries/<slug>.html, built by scripts/build-industry-pages.mjs) ---------- */
+.industry-hero { padding-block: clamp(48px, 7vw, 88px) clamp(56px, 7vw, 96px); }
+.industry-hero .eyebrow { margin-bottom: 24px; }
+.industry-hero h1 { max-width: 16em; margin-bottom: 24px; }
+.industry-hero .lede { max-width: 38em; }
+.crumbs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 32px; font-size: 0.92rem; color: var(--muted); }
+.crumbs a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+.crumbs a:hover { color: var(--text-strong); }
+/* A card that is not a link must not lift on hover like one. */
+.module-card-static:hover { translate: none; border-color: var(--border); box-shadow: var(--shadow-card); }
+.module-card-static .module-points { margin-bottom: 0; }

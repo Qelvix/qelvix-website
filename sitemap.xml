@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://www.qelvix.in/</loc></url>
+  <url><loc>https://www.qelvix.in/industries/garage</loc></url>
+  <url><loc>https://www.qelvix.in/industries/doctor-clinic</loc></url>
+  <url><loc>https://www.qelvix.in/industries/salon-beauty-parlour</loc></url>
+  <url><loc>https://www.qelvix.in/industries/retail-showroom</loc></url>
+  <url><loc>https://www.qelvix.in/industries/logistics</loc></url>
   <url><loc>https://www.qelvix.in/modules/jobcards</loc></url>
   <url><loc>https://www.qelvix.in/modules/customers</loc></url>
   <url><loc>https://www.qelvix.in/modules/tracking</loc></url>
