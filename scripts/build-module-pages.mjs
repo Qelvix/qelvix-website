@@ -13,6 +13,7 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
+import { industries } from './industries-data.mjs';
 
 const SITE = 'https://www.qelvix.in';
 // "Platform & Operations" is mock uptime and pipeline numbers, not a product module, and the home page does not link it.
@@ -40,7 +41,7 @@ function buildPage(id, mod) {
   const url = `${SITE}/modules/${id}`;
   const title = `${mod.name} — Qelvix ERP`;
   // Google cuts descriptions off at roughly 155-160 characters, so the brand line is added only where it fits.
-  const withBrand = `${mod.tagline} Part of Qelvix ERP, the connected platform for garages and workshops.`;
+  const withBrand = `${mod.tagline} Part of Qelvix ERP, the connected platform for garages, clinics, salons and retail.`;
   const description = withBrand.length <= 158 ? withBrand : mod.tagline;
   if (description.length > 160) throw new Error(`Tagline of "${id}" is ${description.length} characters; shorten it in modules-data.js`);
   const first = mod.features[0];
@@ -146,7 +147,12 @@ for (const [id, mod] of modules) {
   writeFileSync(join(root, 'modules', `${id}.html`), buildPage(id, mod));
 }
 
-const urls = [`${SITE}/`, ...modules.map(([id]) => `${SITE}/modules/${id}`)];
+// The industry pages are built by build-industry-pages.mjs; this script owns sitemap.xml, so it lists them too.
+const urls = [
+  `${SITE}/`,
+  ...industries.map((i) => `${SITE}/industries/${i.slug}`),
+  ...modules.map(([id]) => `${SITE}/modules/${id}`),
+];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map((u) => `  <url><loc>${u}</loc></url>`).join('\n')}
