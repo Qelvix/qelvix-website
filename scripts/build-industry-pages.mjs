@@ -132,13 +132,15 @@ function buildPage(ind) {
 <meta property="og:url" content="${url}">
 <meta property="og:title" content="${esc(ind.title)}">
 <meta property="og:description" content="${esc(ind.description)}">
-<meta property="og:image" content="${SITE}/branding/og-image.png">
+<meta property="og:image" content="${SITE}/branding/og-image.png?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Qelvix ERP: run your whole business on one platform. Garages, car wash, clinics, salons, retail and logistics.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(ind.title)}">
 <meta name="twitter:description" content="${esc(ind.description)}">
-<meta name="twitter:image" content="${SITE}/branding/og-image.png">
+<meta name="twitter:image" content="${SITE}/branding/og-image.png?v=2">
+<meta name="twitter:image:alt" content="Qelvix ERP: run your whole business on one platform. Garages, car wash, clinics, salons, retail and logistics.">
 <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
 ${themeScript}
 ${fontsAndIcons}
